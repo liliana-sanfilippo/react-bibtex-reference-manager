@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
 import {renderCitation} from "./renderCitations";
 import {BibtexParserProps} from "./BibtexParserProps";
-import {BibEntry} from "./BibEntry";
-import {BibtexParser as Parser} from "@liliana-sanfilippo/bibtex-ts-parser";
+import {BibtexParser as Parser} from "bibtex-js-parser";
+import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
 
 
 
 
 export const BibtexParser: React.FC<BibtexParserProps> = ({ bibtexSources , special, start}) => {
-    const [parsedEntries, setParsedEntries] = useState<BibEntry[]>([]);
-
+    const [parsedEntries, setParsedEntries] = useState<Entry[]>([]);
+    console.log("Mounting");
     // Parse BibTeX on component mount or when sources change
     useEffect(() => {
         try {
-            const allEntries: BibEntry[] = [];
+            const allEntries: Entry[] = [];
+            console.log("Now for each entrie", bibtexSources);
             bibtexSources.forEach((bibtex) => {
                 // console.log(`Parsing BibTeX entry #${index + 1}: `, bibtex);
                 const parsed = Parser.parseToJSON(bibtex);
+                console.log("parsed " + parsed[0].id);
                 // console.log(`Parsed entry: `, parsed);
                 allEntries.push(...parsed);
             });
             setParsedEntries(allEntries);
+            allEntries.forEach(entry => console.log(entry.id));
             //console.log("All parsed entries: ", allEntries);
         } catch (error) {
             console.error("Error parsing BibTeX: ", error);
@@ -30,7 +33,6 @@ export const BibtexParser: React.FC<BibtexParserProps> = ({ bibtexSources , spec
 
 
     let additionalname = "";
-
     if (special) {
         additionalname = `#${special}`;
     }

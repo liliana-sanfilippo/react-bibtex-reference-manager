@@ -1,18 +1,17 @@
 // Helper function to render individual citations based on their type
 import {formatPages} from "./formatPages";
 import {formatAuthors} from "./formatAuthors";
-import {BibEntry} from "./BibEntry";
 import React from "react";
+import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
 
-export function renderCitation (entry: BibEntry, index: number,  additionalname: string, start?: number): React.ReactNode {
+export function renderCitation (entry: Entry, index: number,  additionalname: string, start?: number): React.ReactNode {
 
     // Use the index as citation number
     let citationNumber = index +1;
     if(start){
         citationNumber += start -1;
     }
-    const entryType = entry.entryType.toLowerCase(); // Convert to lowercase for consistent comparison
-    const entryTags = entry.entryTags; // Adjust based on your data structure
+    const entryType = entry.type.toLowerCase(); // Convert to lowercase for consistent comparisondjust based on your data structure
 
     switch (entryType) {
         case "article":
@@ -20,49 +19,52 @@ export function renderCitation (entry: BibEntry, index: number,  additionalname:
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={`desc-${citationNumber}${additionalname}`}>
                     {/* Citation number as comment */}
                     {/*<!-- Citation num ${citationNumber} --> */}
-                    {formatAuthors(entryTags.AUTHOR || entryTags.EDITOR || "")}
-                    &nbsp;<span property="schema:name">{entryTags.TITLE.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
-                    &nbsp;<i property="schema:publisher" typeof="schema:Organization">{entryTags.JOURNAL}</i>
-                    &nbsp;<b property="issueNumber" typeof="PublicationIssue">{entryTags.VOLUME}</b>
-                    {formatPages(entryTags.PAGES) && <span>{formatPages(entryTags.PAGES)}</span>}
-                    {entryTags.YEAR && (
-                        <span>&nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entryTags.YEAR}>{entryTags.YEAR}</time>).</span>
+                    {formatAuthors(entry.author || entry.editor || "")}
+                    &nbsp;<span property="schema:name">{entry.title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
+                    &nbsp;<i property="schema:publisher" typeof="schema:Organization">{entry.journal}</i>
+                    &nbsp;<b property="issueNumber" typeof="PublicationIssue">{entry.volume}</b>
+                    {formatPages(entry.pages) && <span>{formatPages(entry.pages)}</span>}
+                    {entry.year && (
+                        <span>&nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={(entry.year as string)}>{entry.year}</time>).</span>
                     )}
-                    {entryTags.DOI && (
-                        <span>&nbsp;<a className="doi" href={`https://doi.org/${entryTags.DOI}`}>doi: {entryTags.DOI}</a></span>
+                    {entry.doi && (
+                        <span>&nbsp;<a className="doi" href={`https://doi.org/${entry.doi}`}>doi: {entry.doi}</a></span>
                     )}
                 </li>
             );
 
         case "book":
+
+            const authors: string = (entry.author ?? entry.editor ?? "") as string;
+            const auts: string = formatAuthors(authors);
             return (
                 <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={`desc-${citationNumber}`}>
                     {/* Render authors */}
-                    {formatAuthors(entryTags.AUTHOR || entryTags.EDITOR || "")}
+                    {formatAuthors(entry.author || entry.editor || "")}
                     {/* Render title or booktitle */}
-                    {entryTags.TITLE ? (
-                        <span property="schema:name">&nbsp;{entryTags.TITLE.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
-                    ) : entryTags.BOOKTITLE ? (
-                        <span property="schema:name">&nbsp;{entryTags.BOOKTITLE.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
+                    {entry.title ? (
+                        <span property="schema:name">&nbsp;{entry.title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
+                    ) : entry.booktitle ? (
+                        <span property="schema:name">&nbsp;{entry.booktitle.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
                     ) : (
                         console.warn(`No title or booktitle found for entry ${citationNumber}`)
                     )}
                     {/* Render publisher */}
-                    {entryTags.PUBLISHER && (
+                    {entry.publisher && (
                         <i property="schema:publisher" typeof="schema:Organization">
-                            &nbsp;{entryTags.PUBLISHER}
+                            &nbsp;{entry.publisher}
                         </i>
                     )}
                     {/* Render year */}
-                    {entryTags.YEAR && (
+                    {entry.year && (
                         <span>
-                &nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entryTags.YEAR}>
-                  {entryTags.YEAR}
+                &nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entry.year as string}>
+                  {entry.year}
                 </time>).
               </span>
                     )}
-                    {entryTags.ISBN && (
-                        <span property="isbn">&nbsp;{entryTags.ISBN}</span>
+                    {entry.issn && (
+                        <span property="isbn">&nbsp;{entry.issn}</span>
                     )
                     }
                 </li>
@@ -72,18 +74,18 @@ export function renderCitation (entry: BibEntry, index: number,  additionalname:
             return (
                 <li key={index} typeof="schema:WebPage" role="doc-biblioentry" property="schema:citation" id={`desc-${citationNumber}`}>
                     {/* Render authors */}
-                    {(entryTags.AUTHOR || entryTags.EDITOR || "")}
+                    {(entry.author || entry.editor || "")}
                     {/* Render title */}
-                    {entryTags.TITLE && (
-                        <span property="schema:name">.&nbsp;{entryTags.TITLE.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
+                    {entry.title && (
+                        <span property="schema:name">.&nbsp;{entry.title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
                     )}
                     {/* Render howpublished */}
-                    {entryTags.HOWPUBLISHED && (
-                        <i property="schema:publisher" typeof="schema:Organization">&nbsp;{entryTags.HOWPUBLISHED}</i>
+                    {entry.publisher && (
+                        <i property="schema:publisher" typeof="schema:Organization">&nbsp;{entry.publisher}</i>
                     )}
                     {/* Render year */}
-                    {entryTags.YEAR && (
-                        <span>&nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entryTags.YEAR}>{entryTags.YEAR}</time>).</span>
+                    {entry.year && (
+                        <span>&nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entry.year as string}>{entry.year}</time>).</span>
                     )}
                 </li>
             );
@@ -92,17 +94,17 @@ export function renderCitation (entry: BibEntry, index: number,  additionalname:
         case "inproceedings":
             return (
                 <li key={index}>
-                    <span>{formatAuthors(entryTags.AUTHOR || "")}</span>&nbsp;
-                    <span>{entryTags.TITLE}</span>. In <i>{entryTags.BOOKTITLE}</i>,&nbsp;
-                    <b>{entryTags.editor}</b>, {entryTags.YEAR}.
+                    <span>{formatAuthors(entry.author || "")}</span>&nbsp;
+                    <span>{entry.title}</span>. In <i>{entry.booktitle}</i>,&nbsp;
+                    <b>{entry.editor}</b>, {entry.year}.
                 </li>
             );
 
         case "phdthesis":
             return (
                 <li key={index}>
-                    <span>{formatAuthors(entryTags.AUTHOR || "")}</span>&nbsp;
-                    <span>{entryTags.TITLE}</span>, PhD thesis, {entryTags.SCHOOL}, {entryTags.YEAR}.
+                    <span>{formatAuthors(entry.author || "")}</span>&nbsp;
+                    <span>{entry.title}</span>, PhD thesis, {entry.school}, {entry.year}.
                 </li>
             );
 

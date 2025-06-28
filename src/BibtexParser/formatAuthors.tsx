@@ -1,5 +1,5 @@
 // Helper function to render AUTHORS
-export const formatAuthors = (authors: string): string => {
+export function formatAuthors(authors: string): string {
     //console.log("Original input:", authors);
 
     // Bereinigen des Eingabestrings und Ersetzen von "and" durch "|"
@@ -32,18 +32,14 @@ export const formatAuthors = (authors: string): string => {
         const initials = firstNames.split(' ').map(n => n[0] + '.').join(' ');
         //console.log(`Initials for "${firstNames}": "${initials}"`);
 
-        const formattedName = `${last}, ${initials}`.trim(); // Rückgabe des formatierten Namens
-        //console.log(`Formatted name: "${formattedName}"`);
+        return `${last}, ${initials}`.trim(); // Rückgabe des formatierten Namens
 
-        return formattedName;
     });
 
     //console.log("Formatted authors before adding et al.:", formattedAuthors);
 
     // Kombiniere die formatierten Autoren mit korrekter Interpunktion
-    const output = formattedAuthors.slice(0, maxAuthors).join('; ') +
+    return formattedAuthors.slice(0, maxAuthors).join('; ') +
         (formattedAuthors.length > maxAuthors ? ' et al.' : '');
 
-    //console.log("Final output:", output);
-    return output;
 };

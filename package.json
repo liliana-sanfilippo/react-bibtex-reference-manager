@@ -26,7 +26,7 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@liliana-sanfilippo/bibtex-ts-parser": "^0.1.6",
+    "@liliana-sanfilippo/bibtex-ts-parser": "^0.1.13",
     "bibtex-js-parser": "^1.1.6"
   },
   "devDependencies": {
