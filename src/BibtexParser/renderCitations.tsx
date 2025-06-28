@@ -39,23 +39,23 @@ export function renderCitation (entry: Entry, index: number,  additionalname: st
             const auts: string = formatAuthors(authors);
             return (
                 <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={`desc-${citationNumber}`}>
-                    {/* Render authors */}
-                    {formatAuthors(entry.author || entry.editor || "")}
-                    {/* Render title or booktitle */}
+                    {auts}
                     {entry.title ? (
                         <span property="schema:name">&nbsp;{entry.title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
                     ) : entry.booktitle ? (
                         <span property="schema:name">&nbsp;{entry.booktitle.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
                     ) : (
-                        console.warn(`No title or booktitle found for entry ${citationNumber}`)
+                        (() => {
+                            console.warn(`No title or booktitle found for entry ${citationNumber}`);
+                            return <></>;
+                        })()
                     )}
-                    {/* Render publisher */}
+
                     {entry.publisher && (
                         <i property="schema:publisher" typeof="schema:Organization">
                             &nbsp;{entry.publisher}
                         </i>
                     )}
-                    {/* Render year */}
                     {entry.year && (
                         <span>
                 &nbsp;(<time property="schema:datePublished" datatype="xsd:gYear" dateTime={entry.year as string}>

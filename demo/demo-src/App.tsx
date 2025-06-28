@@ -1,26 +1,21 @@
 import "./app.css"
 import {BibtexParser} from "../../src/BibtexParser/Sources";
+import {importAllBibFilesAsync} from "../../src";
 import {SupScrollLink} from "../../src/ScrollLink/ScrollLink";
 import { LoremIpsum } from 'react-lorem-ipsum';
-const bibtex =[ `
-@article{doe2020,
-    author = {Jane Doe},
-    title = {Reference One},
-    year = {3001}
-}
-    `,
-    `
-@article{doe2020,
-    author = {Jane Doe},
-    title = {Reference Two},
-    year = {2001}
-}
-    `
+import { useEffect, useState } from "react";
 
-];
 
 export default function App() {
-  return (
+    const [bibtex, setTexts] = useState<string[]>([]);
+    useEffect(() => {
+        const fileNames = ['example.bib'];
+        importAllBibFilesAsync(fileNames)
+            .then(setTexts)
+            .catch(console.error);
+    }, []);
+
+    return (
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für BibtexViewer</h1>

@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@liliana-sanfilippo/bibtex-ts-parser": "^0.1.13",
-    "bibtex-js-parser": "^1.1.6"
+    "next": "^15.3.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

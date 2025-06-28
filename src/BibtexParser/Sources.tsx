@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {renderCitation} from "./renderCitations";
 import {BibtexParserProps} from "./BibtexParserProps";
-import {BibtexParser as Parser} from "bibtex-js-parser";
-import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
+import {Entry, BibtexParser as Parser} from "@liliana-sanfilippo/bibtex-ts-parser";
 
 
 
