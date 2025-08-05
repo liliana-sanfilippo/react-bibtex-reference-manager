@@ -1,5 +1,4 @@
-# react-bibtex-source-generator
-
+# React BibTeX Reference Generator
 I am working towards a react component that automatically renders BibTeX sources for scientific blogging and other scientific websites such as iGEM Wikis
 
 ## State
