@@ -7,7 +7,6 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@liliana-sanfilippo/author-name-parser": "file:../../author-name-parser/liliana-sanfilippo-author-name-parser-0.1.0.tgz",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
