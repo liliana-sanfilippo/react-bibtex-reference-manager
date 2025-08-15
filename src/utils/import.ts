@@ -22,6 +22,12 @@ export async function importAllBibFilesAsync(fileNames: string[]): Promise<strin
     return contents;
 }
 
+export async function importBibFileAsync(file: string): Promise<string[]> {
+    const res = await fetch(file);
+    const text =  await res.text();
+    return [text];
+}
+
 
 
 
