@@ -1,34 +1,34 @@
 import {Entry, parseToEntry} from "@liliana-sanfilippo/bibtex-ts-parser";
-import React from "react";
+import React, {ReactElement} from "react";
 
 export abstract class AbstractCitation {
     protected bibtexSources: string[];
     private parsedEntries: Entry[] = [];
-    protected startnumber: number;
+    protected start_number: number;
     protected appendage: string;
 
-    constructor(bibtexSources: string[] , special?: string, start?: number) {
-        this.startnumber = (start ?? 1);
-        this.appendage = this.createAdditonalName(special);
+    protected constructor(bibtexSources: string[] , special?: string, start?: number) {
+        this.start_number = (start ?? 1);
+        this.appendage = this.createAdditionalName(special);
         this.bibtexSources = bibtexSources;
         this.parse(this.bibtexSources);
 
     }
 
     getStartNumber(): number{
-        return this.startnumber;
+        return this.start_number;
     }
 
     abstract renderCitation(entry: Entry, index?: number): React.ReactNode ;
     abstract formatAuthors(authors: string): React.ReactNode;
 
 
-    getparsedEntries(): Entry[] {
+    getParsedEntries(): Entry[] {
         return this.parsedEntries;
     }
 
 
-    protected formatPages(pages: string | undefined): JSX.Element | null {
+    protected formatPages(pages: string | undefined): ReactElement | null {
         if (pages && pages.length > 0) {
             const pageRangeRegex = /--|-|–|â€“/;
             if (pageRangeRegex.test(pages)) {
@@ -57,15 +57,15 @@ export abstract class AbstractCitation {
         }
     }
 
-    protected createAdditonalName(additionalname?: string): string {
-        if (additionalname) {
-           return  `#${additionalname}`;
+    protected createAdditionalName(additional_name?: string): string {
+        if (additional_name) {
+           return  `#${additional_name}`;
         } else return ""
     }
 
     protected createEntryId(index: number): string{
         let citationNumber = index +1;
-        citationNumber += this.startnumber -1;
+        citationNumber += this.start_number -1;
         return `desc-${citationNumber}${this.appendage}`
     }
 

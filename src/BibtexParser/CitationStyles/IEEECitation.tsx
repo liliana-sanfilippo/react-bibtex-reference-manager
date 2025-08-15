@@ -8,7 +8,7 @@ export class IEEECitation extends AbstractCitation {
         super(bibtexSources, special, start);
     }
     formatAuthors(authors: string): React.ReactNode {
-        return allNames(authors).map(fullname => (fullname.firstnames.replace("-", " ").split(" ").map(part => part.charAt(0)).join("")) + "." + " " +  fullname.lastname ).join("; ") + ",";
+        return allNames(authors).map(full_name => (full_name.firstnames.replace("-", " ").split(" ").map(part => part.charAt(0)).join("")) + "." + " " +  full_name.lastname ).join("; ") + ",";
     }
 
     renderCitation(entry: Entry, index: number): React.ReactNode {

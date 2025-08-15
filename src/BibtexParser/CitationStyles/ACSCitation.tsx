@@ -9,7 +9,7 @@ export class ACSCitation extends AbstractCitation {
     }
 
     formatAuthors(authors: string): React.ReactNode {
-        return allNames(authors).map(fullname =>  fullname.lastname + ", " + fullname.firstnames.charAt(0) + ".").join("; ");
+        return allNames(authors).map(full_name =>  full_name.lastname + ", " + full_name.firstnames.charAt(0) + ".").join("; ");
     }
 
     renderCitation(entry: Entry, index: number): React.ReactNode {

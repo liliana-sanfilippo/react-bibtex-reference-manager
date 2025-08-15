@@ -29,7 +29,7 @@ export const Citations: React.FC<BibtexParserProps> = ({ bibtexSources , special
         return <p>Loading citations...</p>;
     }
 
-    const entries = citation.getparsedEntries();
+    const entries = citation.getParsedEntries();
 
     if (!citation.hasEntries()) {
         return <p>No citations available.</p>;

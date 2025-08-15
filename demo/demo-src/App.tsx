@@ -9,7 +9,7 @@ export default function App() {
     const [bibtexA, setTextsA] = useState<string[]>([]);
     const [bibtexB, setTextsB] = useState<string[]>([]);
     useEffect(() => {
-        importBibFileAsync("example1.bib")
+        importAllBibFilesAsync(["example1.bib", "example2.bib"])
             .then(setTextsA)
             .catch(console.error);
     }, []);
@@ -45,24 +45,6 @@ export default function App() {
             <Citations bibtexSources={bibtexA} style="ama" special="ama2" start={3}/>
             <b style={{color: "blue"}}>Both with the same references (above) as well as different ones (below)</b>
             <Citations bibtexSources={bibtexB} style="ama" special="ama2" start={3}/>
-            <h2>TODOs</h2>
-            <ul>
-                <li>Die Number wird nicht korrekt ausgelesen</li>
-                <li>IEEE Year und date schema ding nicht gut </li>
-                <li> Laak, Jeroen A. W. M. van derwird nicht richtig geparst</li>
-                <li>Bei NLM fehlt Day und Schema nochmla prüfen </li>
-                <li>Day wird gar nicht eingelesen beim Parser, urldate auch nicht</li>
-                <li>Funktioniert mit Abstract nicht</li>
-                <li>Pages Abstand verbessern / fixen</li>
-                <li>Bis jetzt nur mit Nummerierungen</li>
-                <li>CSE ist nicht drin </li>
-                <li>Verschiedene ScrollLinks</li>
-                <li>Evtl. verschiedene Zitierweisen (nicht nur Zahlen) anbieten</li>
-                <li>Ich brauche doi Parsing</li>
-                <li>Klappt nicht aus mehreren Dateien zu holen</li>
-                <li>Scrollinks können nicht die verschiedenen special desc</li>
-
-            </ul>
         </div>
     </div>
   );

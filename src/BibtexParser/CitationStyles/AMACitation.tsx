@@ -8,7 +8,7 @@ export class AMACitation extends AbstractCitation {
         super(bibtexSources, special, start);
     }
     formatAuthors(authors: string): React.ReactNode {
-        return allNames(authors).map(fullname => fullname.lastname + " " + (fullname.firstnames.replace("-", " ").split(" ").map(part => part.charAt(0)).join(""))).join(", ") + ".";
+        return allNames(authors).map(full_name => full_name.lastname + " " + (full_name.firstnames.replace("-", " ").split(" ").map(part => part.charAt(0)).join(""))).join(", ") + ".";
 
     }
     renderCitation(entry: Entry, index: number): React.ReactNode {

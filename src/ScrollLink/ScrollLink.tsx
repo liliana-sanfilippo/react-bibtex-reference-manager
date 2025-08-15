@@ -1,4 +1,5 @@
 import { goTo } from "./scrollTo";
+import React from "react";
 
 
 interface SupScrollLinkProps {
