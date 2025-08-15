@@ -5,7 +5,8 @@ I am working towards a react component that automatically renders BibTeX sources
 
 - [X] ANTLR Grammar to parse the different ways author names can be written.
 - [X] Create Webpack Parser out of Grammar 
-- [ ] Include name parser in Bibtex parser
+- [ ] Include name parser in Bibtex parser#
+- [ ] Include multiple ways to format names and make them available on Reference-Configuration
 
 
 ## Related projects and components
