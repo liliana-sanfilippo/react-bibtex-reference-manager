@@ -4,6 +4,7 @@ import {importAllBibFilesAsync} from "../../src";
 import {SupScrollLink} from "../../src/ScrollLink/ScrollLink";
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { useEffect, useState } from "react";
+import {allNames} from "@liliana-sanfilippo/author-name-parser";
 
 
 export default function App() {
@@ -14,7 +15,9 @@ export default function App() {
             .then(setTexts)
             .catch(console.error);
     }, []);
+    const names = "Reisman, John J. and Rivington-Law, Betty and Corey, Mary and Marcotte, Jacques and Wannamaker, Eleanor and Harcourt, Dawn and Levison, Henry";
 
+    console.log(allNames(names))
     return (
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>

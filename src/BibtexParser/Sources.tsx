@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {renderCitation} from "./renderCitations";
 import {BibtexParserProps} from "./BibtexParserProps";
-import {Entry, BibtexParser as Parser} from "@liliana-sanfilippo/bibtex-ts-parser";
+import {Entry, parseToEntry} from "@liliana-sanfilippo/bibtex-ts-parser";
 
 
 
@@ -16,7 +16,7 @@ export const BibtexParser: React.FC<BibtexParserProps> = ({ bibtexSources , spec
             console.log("Now for each entrie", bibtexSources);
             bibtexSources.forEach((bibtex) => {
                 // console.log(`Parsing BibTeX entry #${index + 1}: `, bibtex);
-                const parsed = Parser.parseToJSON(bibtex);
+                const parsed = parseToEntry(bibtex);
                 console.log("parsed " + parsed[0].id);
                 // console.log(`Parsed entry: `, parsed);
                 allEntries.push(...parsed);
