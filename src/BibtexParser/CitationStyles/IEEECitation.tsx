@@ -38,7 +38,7 @@ export class IEEECitation extends AbstractCitation {
                     ,&nbsp;
                     {volume((entry.volume ?? "NULL"), true)}
                     ,&nbsp;
-                    {issue((entry.number ?? "NULL"), true)}
+                    {issue((entry.number?.toString() ?? "NULL"), true)}
                     , pp.&nbsp;
                     {pages((entry.pages ?? "NULL"))}
                     ,&nbsp;

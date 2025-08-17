@@ -42,7 +42,7 @@ export class VANCOUVERCitation extends AbstractCitation {
                     ;&nbsp;
                     {volume((entry.volume ?? "NULL"))}
                     (
-                    {issue((entry.number ?? "NULL"))}
+                    {issue((entry.number?.toString() ?? "NULL"))}
                     )
                     :
                     {pages((entry.pages ?? "NULL"))}

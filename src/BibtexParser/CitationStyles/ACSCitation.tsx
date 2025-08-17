@@ -25,7 +25,7 @@ export class ACSCitation extends AbstractCitation {
                 &nbsp;
                 {journal((entry.journal ?? "NULL"), true, true)}
                 .&nbsp;
-                {publishedTime((entry.year ?? "NULL"), null, null, true)}
+                {publishedTime((entry.year ?? "NULL"), undefined, undefined, true)}
                 ,&nbsp;
                 {volume((entry.volume ?? "NULL"))}
                 ,&nbsp;

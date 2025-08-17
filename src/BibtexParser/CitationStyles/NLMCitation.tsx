@@ -25,11 +25,11 @@ export class NLMCitation extends AbstractCitation {
                 .&nbsp;
                 {journal((entry.journal ?? "NULL"))}
                 .&nbsp;
-                {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), null, false, true)}
+                {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), undefined, false, true)}
                 ;
                 {volume((entry.volume ?? "NULL"))}
                 (
-                {issue((entry.number ?? "NULL"))}
+                {issue((entry.number?.toString() ?? "NULL"))}
                 ):
                 {pages((entry.pages ?? "NULL"))}
                 .
@@ -41,3 +41,4 @@ export class NLMCitation extends AbstractCitation {
         }
     }
 }
+

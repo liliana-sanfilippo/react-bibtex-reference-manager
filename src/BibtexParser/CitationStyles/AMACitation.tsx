@@ -43,7 +43,7 @@ export class AMACitation extends AbstractCitation {
                 ;
                 {volume((entry.volume ?? "NULL"))}
                 (
-                {issue((entry.number ?? "NULL"))}
+                {issue((entry.number?.toString() ?? "NULL"))}
                 ):
                 {pages((entry.pages ?? "NULL"))}
                 .
@@ -79,8 +79,39 @@ export class AMACitation extends AbstractCitation {
                     .
                 </li>
             )
-        }else if (entry.type == "misc") {
-            if ((entry.note).toLowerCase() == "ai") {
+        } else if (entry.type == "online" || entry.type == "misc") {
+            return (
+                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    {authors((entry.author ?? "NULL"))}
+                    &nbsp;
+                    {title(entry.title)}
+                    . Published&nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    .&nbsp;
+                    {accessed((entry.note ?? "NULL"))}
+                    .&nbsp;
+                    {fromUrl((entry.url ?? "NULL"))}
+                </li>
+            )
+        }
+        else if (entry.type == "software") {
+            // TODO add version at edition
+            return (
+                <li key={index} typeof="schema:Software" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    {title(entry.title)}
+                    &nbsp;[Computer Software].&nbsp;
+                    {edition((entry.edition ?? "NULL"))}
+                    .&nbsp;
+                    {address((entry.address ?? "NULL"))}
+                    :&nbsp;
+                    {publisher((entry.publisher ?? this.formatAuthors(entry.author ?? "NULL") ?? entry.organization ??  "NULL"))}
+                    ;&nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    .
+                </li>
+            )
+        }
+        else if (entry.type == "genai") {
                 return (
                     <li key={index}  role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
                         {title((entry.title ?? "NULL"))}
@@ -94,19 +125,6 @@ export class AMACitation extends AbstractCitation {
                         {fromUrl((entry.url ?? "NULL"))}
                     </li>
                 )
-            } else return (
-                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
-                    {authors((entry.author ?? "NULL"))}
-                    &nbsp;
-                    {title(entry.title)}
-                    . Published&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
-                    .&nbsp;
-                    {accessed((entry.note ?? "NULL"))}
-                    .&nbsp;
-                    {fromUrl((entry.url ?? "NULL"))}
-                </li>
-            )
         } else if (entry.type == "mastersthesis") {
             return (
                 <li key={index} typeof="schema:Thesis" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
@@ -150,18 +168,19 @@ export class AMACitation extends AbstractCitation {
                     {entry.doi && doi((entry.doi ?? "NULL"))}
                 </li>
             );
-        }  else if (entry.type == "inproceedings" || entry.type == "proceedings") {
+        }  else if (entry.type == "inproceedings" || entry.type == "proceedings" || entry.type == "conference") {
+            // TODO add ?? "entry.event" to publisher
             return (
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
                     . Presented at:&nbsp;
-                    {conference((entry.journal ?? entry.publisher ?? "NULL" ?? "entry.event"))}
+                    {conference((entry.journal ?? entry.publisher ?? "NULL" ))}
                     ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
                     ;&nbsp;
-                    {address((entry.address ?? "NULL" ?? "entry.location"))}
+                    {address((entry.address ?? "NULL"))}
                     .
                     {entry.url && fromUrl(entry.url)}
                 </li>
@@ -182,7 +201,7 @@ export class AMACitation extends AbstractCitation {
             return (
                 <li key={index} typeof="schema:Report" role="doc-biblioentry" property="schema:citation"
                     id={super.createEntryId(index)}>
-                    {(entry.author && authors(this.formatAuthors(entry.author))) || "entry.organization"}
+                    {(entry.author && authors(this.formatAuthors(entry.author))) || entry.organization || "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
                     .&nbsp;
@@ -197,11 +216,11 @@ export class AMACitation extends AbstractCitation {
             return (
                 <li key={index} typeof="schema:Manual" role="doc-biblioentry" property="schema:citation"
                     id={super.createEntryId(index)}>
-                    {(entry.author && authors(this.formatAuthors(entry.author))) || "entry.organization"}
+                    {(entry.author && authors(this.formatAuthors(entry.author))) || entry.organization || "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
                     &nbsp;
-                    {edition(("NULL" ?? "entry.edition"))}
+                    {edition((entry.edition ?? "NULL"))}
                     &nbsp;ed.&nbsp;
                     {address((entry.address ?? "NULL"))}
                     :&nbsp;

@@ -62,6 +62,7 @@ export default function App() {
             https://library.saskhealthauthority.ca/citation/ama/theses
             https://owl.purdue.edu/owl/research_and_citation/ama_style/index.html
             https://www.bibguru.com/g/ama-software-manual-citation/
+            https://www.bibguru.com/g/ama-software-citation/
         </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import {Entry, parseToEntry} from "@liliana-sanfilippo/bibtex-ts-parser";
-import React, {ReactElement} from "react";
+import React from "react";
 
 export abstract class AbstractCitation {
     protected bibtexSources: string[];

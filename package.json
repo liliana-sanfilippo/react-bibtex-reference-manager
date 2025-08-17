@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@liliana-sanfilippo/author-name-parser": "file:../author-name-parser/liliana-sanfilippo-author-name-parser-0.1.0.tgz",
-    "@liliana-sanfilippo/bibtex-ts-parser": "file:../bibtex-ts-parser/liliana-sanfilippo-bibtex-ts-parser-1.0.3.tgz",
+    "@liliana-sanfilippo/bibtex-ts-parser": "file:../bibtex-ts-parser/liliana-sanfilippo-bibtex-ts-parser-1.1.0.tgz",
     "next": "^15.3.4",
     "react-lorem-ipsum": "^1.4.10"
   },
