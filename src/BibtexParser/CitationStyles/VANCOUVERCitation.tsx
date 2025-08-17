@@ -68,8 +68,9 @@ export class VANCOUVERCitation extends AbstractCitation {
                     &nbsp;
                     {volume((entry.volume ?? "NULL"))}.
                     &nbsp;
-                    {address((entry.address ?? "NULL"))}:
+                    {address((entry.address ?? "NULL"))}
                     :
+                    &nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
                     ;
                     {doi((entry.doi ?? "NULL"))}.
@@ -91,6 +92,7 @@ export class VANCOUVERCitation extends AbstractCitation {
                     &nbsp;
                     {address((entry.address ?? "NULL"))}
                     :
+                    &nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
                     ;
                     {doi((entry.doi ?? "NULL"))}.

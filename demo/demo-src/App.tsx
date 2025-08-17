@@ -60,6 +60,8 @@ export default function App() {
             <Citations bibtexSources={types} style="nlm" special="nlm2" />
             https://www.scribbr.co.uk
             https://library.saskhealthauthority.ca/citation/ama/theses
+            https://owl.purdue.edu/owl/research_and_citation/ama_style/index.html
+            https://www.bibguru.com/g/ama-software-manual-citation/
         </div>
     </div>
   );

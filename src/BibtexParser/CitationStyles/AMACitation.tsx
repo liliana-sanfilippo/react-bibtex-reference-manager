@@ -3,8 +3,8 @@ import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
 import React from "react";
 import {allNames} from "@liliana-sanfilippo/author-name-parser";
 import {
-    accessed,
-    authors,
+    accessed, address,
+    authors, conference, doi, edition,
     fromUrl,
     issue,
     journal,
@@ -163,8 +163,97 @@ export class AMACitation extends AbstractCitation {
                 </li>
             )
         }
-        else if (entry == "misc") {
-
+        else if (entry.type == "unpublished") {
+            return (
+                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
+                    &nbsp;
+                    {title(entry.title)}
+                    .
+                    &nbsp;
+                    <i>{publisher((entry.journal ?? entry.publisher ?? "NULL"))}</i>
+                    . Preprint. Posted online
+                    &nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
+                    .
+                    &nbsp;
+                    {doi((entry.doi ?? "NULL"))}
+                </li>
+            );
+        }  else if (entry.type == "inproceedings" || entry.type == "proceedings") {
+            return (
+                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
+                    &nbsp;
+                    {title(entry.title)}
+                    . Presented at:
+                    &nbsp;
+                    {conference((entry.journal ?? entry.publisher ?? "NULL" ?? "entry.event"))}
+                    ;
+                    &nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
+                    ;
+                    &nbsp;
+                    {address((entry.address ?? "NULL" ?? "entry.location"))}
+                    .
+                    {entry.url && fromUrl(entry.url)}
+                </li>
+            );
+        }  else if (entry.type == "booklet") {
+            return (
+                <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation"
+                    id={super.createEntryId(index)}>
+                    {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
+                    &nbsp;
+                    <i>{title(entry.title)}</i>
+                    .
+                    &nbsp;
+                    {publishedTime((entry.year ?? "NULL"))}
+                    .
+                </li>
+            );
+        } else if (entry.type == "techreport") {
+            return (
+                <li key={index} typeof="schema:Report" role="doc-biblioentry" property="schema:citation"
+                    id={super.createEntryId(index)}>
+                    {(entry.author && authors(this.formatAuthors(entry.author))) || "entry.organization"}
+                    &nbsp;
+                    <i>{title(entry.title)}</i>
+                    .
+                    &nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    .
+                    &nbsp;
+                    Accessed
+                    &nbsp;
+                    {accessed((entry.note ?? "NULL"))}
+                    .
+                    {entry.url && fromUrl(entry.url)}
+                </li>
+            );
+        } else if (entry.type == "manual") {
+            return (
+                <li key={index} typeof="schema:Manual" role="doc-biblioentry" property="schema:citation"
+                    id={super.createEntryId(index)}>
+                    {(entry.author && authors(this.formatAuthors(entry.author))) || "entry.organization"}
+                    &nbsp;
+                    <i>{title(entry.title)}</i>
+                    &nbsp;
+                    {edition(("NULL" ?? "entry.edition"))}
+                    &nbsp;
+                    ed.
+                    &nbsp;
+                    .
+                    &nbsp;
+                    {address((entry.address ?? "NULL"))}
+                    :
+                    {publisher((entry.publisher ?? "NULL"))}
+                    ;
+                    &nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    .
+                </li>
+            );
         }
         else {
            return ( <li style={{color:  "orange"}}> Sorry, rendering {entry.type} not possible. </li>)

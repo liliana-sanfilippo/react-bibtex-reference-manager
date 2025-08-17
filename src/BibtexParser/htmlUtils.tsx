@@ -167,3 +167,18 @@ export function school(school: string): React.ReactNode {
     }
     return (<span>{school}</span>)
 }
+
+export function edition(edition: string): React.ReactNode {
+    if (edition === "NULL") {
+        return ( <span style={{color: "red"}}> NO EDITION </span>)
+    }
+    return (<span>{edition}</span>)
+}
+
+
+export function conference(conference: string): React.ReactNode {
+    if (conference === "NULL") {
+        return ( <span style={{color: "red"}}> NO CONFERENCE OR EVENT </span>)
+    }
+    return (<span>{conference}</span>)
+}
