@@ -30,7 +30,7 @@ export default function App() {
             <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
             <p style={{color: "blue"}}> Here we have something we want to reference with thr first reference.<SupScrollLink label="1"/></p>
             <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
-            <p style={{color: "blue"}}> Now the second reference! <SupScrollLink label="2"/></p>
+            <p style={{color: "blue"}}> Now the second reference! <SupScrollLink special="van2" label="1"/></p>
             <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
             <h2 style={{color: "blue"}}>You can also have different citation styles!</h2>
             <h3>There standard is ACS:</h3>
