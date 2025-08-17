@@ -2,28 +2,40 @@ import {AbstractCitation} from "../AbstractCitation";
 import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
 import React from "react";
 import {allNames} from "@liliana-sanfilippo/author-name-parser";
+import {authors, doi, issue, journal, pages, publishedTime, title, volume} from "../htmlUtils";
 
 export class NLMCitation extends AbstractCitation {
     constructor(bibtexSources: string[] , special?: string, start?: number) {
         super(bibtexSources, special, start);
     }
-    formatAuthors(authors: string): React.ReactNode {
+    formatAuthors(authors: string): string{
+        if (authors === "NULL" || authors === undefined || authors == "") {
+            return "NULL"
+        }
         return allNames(authors).map(full_name => full_name.lastname + " " + (full_name.firstnames.replace("-", " ").split(" ").map(part => part.charAt(0)).join(""))).join(", ") + ".";
 
     }
     renderCitation(entry: Entry, index: number): React.ReactNode {
-        const oldDoi = entry.doi;
-        entry.doi = super.fixDoiLink(oldDoi);
         return (
             <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
-                {this.formatAuthors(entry.author || entry.editor || "")}
-                &nbsp;<span property="schema:name">{entry.title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}.</span>
-                &nbsp;<span property="schema:publisher" typeof="schema:Organization">{entry.journal}</span>.
-                <span>&nbsp;<time property="schema:datePublished" dateTime={(entry.year as string)}>{entry.year}{entry.month&& <span>&nbsp;{entry.month}</span>}</time>;</span>
-                <span property="volumeNumber" typeof="PublicationVolume">{entry.volume}</span>
-                (<span property="issueNumber" typeof="PublicationIssue">{entry.number}</span>)
-                <span>:{super.formatPages(entry.pages)}</span>.
-                {entry.doi && <span> doi: <span><a className="doi" href={entry.doi}>{entry.doi}</a></span></span>}
+                {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
+                &nbsp;
+                {title(entry.title)}
+                .
+                &nbsp;
+                {journal((entry.journal ?? "NULL"))}
+                .
+                &nbsp;
+                {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), null, false, true)}
+                ;
+                {volume((entry.volume ?? "NULL"))}
+                (
+                {issue((entry.number ?? "NULL"))}
+                )
+                :
+                {pages((entry.pages ?? "NULL"))}
+                .
+                {doi((entry.doi ?? "NULL"))}.
             </li>
         );
     }

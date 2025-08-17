@@ -20,7 +20,7 @@ export abstract class AbstractCitation {
     }
 
     abstract renderCitation(entry: Entry, index?: number): React.ReactNode;
-    abstract formatAuthors(authors: string): React.ReactNode;
+    abstract formatAuthors(authors: string): string;
 
 
     getParsedEntries(): Entry[] {
@@ -28,34 +28,7 @@ export abstract class AbstractCitation {
     }
 
 
-    protected formatPages(pages: string | undefined): ReactElement | null {
-        if (pages && pages.length > 0) {
-            const pageRangeRegex = /--|-|–|â€“/;
-            if (pageRangeRegex.test(pages)) {
-                const pag = pages.split(pageRangeRegex).map(p => p.trim());
-                const begin = pag[0];
-                const end = pag[1];
 
-                return (
-                    <>
-                        &nbsp;<span property="schema:pageBegin">{begin}</span>-<span property="schema:pageEnd">{end}</span>
-                    </>
-                );
-            } else if (/^\d+(-\d+)?$/.test(pages)) {
-                return (
-                    <>
-                        &nbsp;<span property="schema:pageBegin">{pages}</span>
-                    </>
-                );
-            } else {
-                console.warn(`Non-numeric page information detected ('${pages}'). Treating as missing.`);
-                return null;
-            }
-        } else {
-            console.warn("Sorry, no page information.");
-            return null;
-        }
-    }
 
     protected createAdditionalName(additional_name?: string): string {
         if (additional_name) {
@@ -85,12 +58,6 @@ export abstract class AbstractCitation {
 
     hasEntries(): boolean {
         return this.parsedEntries.length > 0;
-    }
-
-    protected fixDoiLink(doi: string): string {
-        if (doi.includes("https")) {
-            return doi;
-        } else return "https://doi.org/" + doi;
     }
 
 

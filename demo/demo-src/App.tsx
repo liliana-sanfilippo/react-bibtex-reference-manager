@@ -12,8 +12,6 @@ export default function App() {
         importAllBibFilesAsync(["example1.bib", "example2.bib"])
             .then(setTextsA)
             .catch(console.error);
-    }, []);
-    useEffect(() => {
         importBibFileAsync("example2.bib")
             .then(setTextsB)
             .catch(console.error);
@@ -44,7 +42,7 @@ export default function App() {
             <SupScrollLink label="3"/></b>
             <Citations bibtexSources={bibtexA} style="ama" special="ama2" start={3}/>
             <b style={{color: "blue"}}>Both with the same references (above) as well as different ones (below)</b>
-            <Citations bibtexSources={bibtexB} style="ama" special="ama2" start={3}/>
+            <Citations bibtexSources={bibtexB} style="ieee" special="ieee2" start={3}/>
         </div>
     </div>
   );
