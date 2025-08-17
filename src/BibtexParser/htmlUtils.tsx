@@ -155,7 +155,7 @@ export function accessed(accessed: string): React.ReactNode {
 
 export function address(address: string): React.ReactNode {
     if (address === "NULL") {
-        return ( <span style={{color: "red"}}> NO ADDRESS </span>)
+        return ( <span style={{color: "red"}}> NO ADDRESS / LOCATION </span>)
     }
     return (<span>{address}</span>)
 }

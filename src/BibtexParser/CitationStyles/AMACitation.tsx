@@ -177,7 +177,7 @@ export class AMACitation extends AbstractCitation {
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
                     .
                     &nbsp;
-                    {doi((entry.doi ?? "NULL"))}
+                    {entry.doi && doi((entry.doi ?? "NULL"))}
                 </li>
             );
         }  else if (entry.type == "inproceedings" || entry.type == "proceedings") {
@@ -241,8 +241,7 @@ export class AMACitation extends AbstractCitation {
                     &nbsp;
                     {edition(("NULL" ?? "entry.edition"))}
                     &nbsp;
-                    ed.
-                    &nbsp;
+                    ed
                     .
                     &nbsp;
                     {address((entry.address ?? "NULL"))}
