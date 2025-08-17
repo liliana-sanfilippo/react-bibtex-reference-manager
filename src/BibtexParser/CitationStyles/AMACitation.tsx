@@ -34,13 +34,11 @@ export class AMACitation extends AbstractCitation {
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                 &nbsp;
                 {title(entry.title)}
-                .
-                &nbsp;
+                .&nbsp;
                 <i>J</i>
                 &nbsp;
                 {journal((entry.journal ?? "NULL"), true, false)}
-                .
-                &nbsp;
+                .&nbsp;
                 {publishedTime((entry.year ?? "NULL"))}
                 ;
                 {volume((entry.volume ?? "NULL"))}
@@ -57,11 +55,9 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
                     .
                 </li>
@@ -72,14 +68,11 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    . In:
-                    &nbsp;
+                    . In:&nbsp;
                     <i>{title((entry.booktitle) ?? "NULL")}</i>
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
                     :
                     {pages((entry.pages ?? "NULL"))}
@@ -91,19 +84,13 @@ export class AMACitation extends AbstractCitation {
                 return (
                     <li key={index}  role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
                         {title((entry.title ?? "NULL"))}
-                        .
-                        &nbsp;
-                        Version no.
-                        &nbsp;
+                        .&nbsp;Version no.&nbsp;
                         {volume((entry.volume) ?? entry.series ?? "NULL")}
-                        .
-                        &nbsp;
+                        .&nbsp;
                         {publisher((entry.publisher ?? "NULL"))}
-                        .
-                        &nbsp;
+                        .&nbsp;
                         {publishedTime((entry.year ?? "NULL"))}
-                        .
-                        &nbsp;
+                        .&nbsp;
                         {fromUrl((entry.url ?? "NULL"))}
                     </li>
                 )
@@ -112,15 +99,11 @@ export class AMACitation extends AbstractCitation {
                     {authors((entry.author ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    .
-                    Published
-                    &nbsp;
+                    . Published&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {accessed((entry.note ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {fromUrl((entry.url ?? "NULL"))}
                 </li>
             )
@@ -130,16 +113,11 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
-                    .
-                    &nbsp;
-                    Masters Thesis.
-                    &nbsp;
+                    .&nbsp;Masters Thesis.&nbsp;
                     {school(entry.school ?? "NULL")}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {entry.url && fromUrl(entry.url)}
                 </li>
             )
@@ -149,16 +127,11 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
-                    .
-                    &nbsp;
-                    Dissertation.
-                    &nbsp;
+                    .&nbsp;Dissertation.&nbsp;
                     {school(entry.school ?? "NULL")}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {entry.url && fromUrl(entry.url)}
                 </li>
             )
@@ -169,14 +142,11 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     <i>{publisher((entry.journal ?? entry.publisher ?? "NULL"))}</i>
-                    . Preprint. Posted online
-                    &nbsp;
+                    . Preprint. Posted online&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {entry.doi && doi((entry.doi ?? "NULL"))}
                 </li>
             );
@@ -186,14 +156,11 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    . Presented at:
-                    &nbsp;
+                    . Presented at:&nbsp;
                     {conference((entry.journal ?? entry.publisher ?? "NULL" ?? "entry.event"))}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {address((entry.address ?? "NULL" ?? "entry.location"))}
                     .
                     {entry.url && fromUrl(entry.url)}
@@ -206,8 +173,7 @@ export class AMACitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
                     .
                 </li>
@@ -219,13 +185,9 @@ export class AMACitation extends AbstractCitation {
                     {(entry.author && authors(this.formatAuthors(entry.author))) || "entry.organization"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
-                    .
-                    &nbsp;
-                    Accessed
-                    &nbsp;
+                    .&nbsp;Accessed&nbsp;
                     {accessed((entry.note ?? "NULL"))}
                     .
                     {entry.url && fromUrl(entry.url)}
@@ -240,15 +202,11 @@ export class AMACitation extends AbstractCitation {
                     <i>{title(entry.title)}</i>
                     &nbsp;
                     {edition(("NULL" ?? "entry.edition"))}
-                    &nbsp;
-                    ed
-                    .
-                    &nbsp;
+                    &nbsp;ed.&nbsp;
                     {address((entry.address ?? "NULL"))}
-                    :
+                    :&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
                     .
                 </li>

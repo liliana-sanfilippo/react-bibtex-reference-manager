@@ -24,14 +24,11 @@ export class ACSCitation extends AbstractCitation {
                 {title(entry.title)}.
                 &nbsp;
                 {journal((entry.journal ?? "NULL"), true, true)}
-                .
-                &nbsp;
+                .&nbsp;
                 {publishedTime((entry.year ?? "NULL"), null, null, true)}
-                ,
-                &nbsp;
+                ,&nbsp;
                 {volume((entry.volume ?? "NULL"))}
-                ,
-                &nbsp;
+                ,&nbsp;
                 {pages((entry.pages ?? "NULL"))}
                 .
             </li>

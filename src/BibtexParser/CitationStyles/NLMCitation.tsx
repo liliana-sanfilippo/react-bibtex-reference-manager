@@ -22,18 +22,15 @@ export class NLMCitation extends AbstractCitation {
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                 &nbsp;
                 {title(entry.title)}
-                .
-                &nbsp;
+                .&nbsp;
                 {journal((entry.journal ?? "NULL"))}
-                .
-                &nbsp;
+                .&nbsp;
                 {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), null, false, true)}
                 ;
                 {volume((entry.volume ?? "NULL"))}
                 (
                 {issue((entry.number ?? "NULL"))}
-                )
-                :
+                ):
                 {pages((entry.pages ?? "NULL"))}
                 .
                 {doi((entry.doi ?? "NULL"))}.

@@ -35,22 +35,18 @@ export class VANCOUVERCitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {journal((entry.journal ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, true)}
-                    ;
-                    &nbsp;
+                    ;&nbsp;
                     {volume((entry.volume ?? "NULL"))}
                     (
                     {issue((entry.number ?? "NULL"))}
                     )
                     :
                     {pages((entry.pages ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     Available from:
                     &nbsp;
                     {fromUrl((entry.url ?? "NULL"))}
@@ -64,13 +60,11 @@ export class VANCOUVERCitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {volume((entry.volume ?? "NULL"))}.
                     &nbsp;
                     {address((entry.address ?? "NULL"))}
-                    :
-                    &nbsp;
+                    :&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
                     ;
                     {doi((entry.doi ?? "NULL"))}.
@@ -82,23 +76,17 @@ export class VANCOUVERCitation extends AbstractCitation {
                     {authors(this.formatAuthors(entry.author ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    . In:
-                    &nbsp;
+                    . In:&nbsp;
                     {authors(this.formatAuthors(entry.editor ?? "NULL"))}
-                    , editors.
-                    &nbsp;
+                    , editors.&nbsp;
                     {title((entry.booktitle ?? "NULL"))}
-                    .
-                    &nbsp;
+                    .&nbsp;
                     {address((entry.address ?? "NULL"))}
-                    :
-                    &nbsp;
+                    :&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
                     ;
                     {doi((entry.doi ?? "NULL"))}.
-                    &nbsp;
-                    p.
-                    &nbsp;
+                    &nbsp;p.&nbsp;
                     {pages((entry.pages ?? "NULL"))}
                     .
                 </li>
@@ -109,18 +97,11 @@ export class VANCOUVERCitation extends AbstractCitation {
                     {authors((entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
-                    &nbsp;
-                    [Internet].
-                    &nbsp;
+                    &nbsp;[Internet].&nbsp;
                     {publishedTime((entry.year ?? "NULL"))}
-                    &nbsp;
-                    [cited
-                    &nbsp;
+                    &nbsp;[cited&nbsp;
                     {accessed((entry.note ?? "NULL"))}
-                    ].
-                    &nbsp;
-                    Available from:
-                    &nbsp;
+                    ].&nbsp;Available from:&nbsp;
                     {fromUrl((entry.url ?? "NULL"))}
                 </li>
             )

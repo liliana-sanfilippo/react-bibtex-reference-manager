@@ -33,21 +33,15 @@ export class IEEECitation extends AbstractCitation {
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation"
                     id={this.createEntryId(index)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
-                    &nbsp;
-                    "{title(entry.title)}",
-                    &nbsp;
+                    &nbsp;"{title(entry.title)}",&nbsp;
                     {journal((entry.journal ?? "NULL"), true)}
-                    ,
-                    &nbsp;
+                    ,&nbsp;
                     {volume((entry.volume ?? "NULL"), true)}
-                    ,
-                    &nbsp;
+                    ,&nbsp;
                     {issue((entry.number ?? "NULL"), true)}
-                    , pp.
-                    &nbsp;
+                    , pp.&nbsp;
                     {pages((entry.pages ?? "NULL"))}
-                    ,
-                    &nbsp;
+                    ,&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"))}
                     ,
                     {doi((entry.doi ?? "NULL"))}.
@@ -59,14 +53,11 @@ export class IEEECitation extends AbstractCitation {
                         {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                         &nbsp;
                         <i>{title(entry.title)}</i>
-                        .
-                        &nbsp;
+                        .&nbsp;
                         {address((entry.address ?? "NULL"))}
-                        :
-                        &nbsp;
+                        :&nbsp;
                         {publisher((entry.publisher ?? "NULL"))}
-                        ,
-                        &nbsp;
+                        ,&nbsp;
                         {publishedTime((entry.year ?? "NULL"))}
                         .
                     </li>
@@ -78,16 +69,11 @@ export class IEEECitation extends AbstractCitation {
                         {authors((entry.author ?? entry.editor ?? "NULL"))}
                         &nbsp;
                         {title(entry.title)}
-                        .
-                        Published
-                        &nbsp;
+                        . Published&nbsp;
                         {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
-                        .
-                        &nbsp;
+                        .&nbsp;
                         {fromUrl((entry.url ?? "NULL"))}
-                        &nbsp;
-                        (accessed
-                        &nbsp;
+                        &nbsp;(accessed&nbsp;
                         {accessed((entry.note ?? "NULL"))}
                         ).
                     </li>
