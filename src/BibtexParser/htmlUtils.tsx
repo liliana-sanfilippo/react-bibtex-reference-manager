@@ -1,7 +1,9 @@
 import React from "react";
-import {Entry, parseToEntry} from "@liliana-sanfilippo/bibtex-ts-parser";
 
 export function title(title:string): React.ReactNode {
+    if (title === "NULL") {
+        return ( <span style={{color: "red"}}> NO BOOK TITLE </span>)
+    }
     return (
       <><span property="schema:name">{title.replace(/[?!.]/g, '').replace(/\n/g, ' ').trim()}</span></>
     )
@@ -42,7 +44,7 @@ export function volume(volume:string | number, vol?: boolean): React.ReactNode {
     } else  return (<span style={warning ? { color: "red" } : {}} property="volumeNumber" typeof="PublicationVolume">{volume as string}</span>)
 }
 
-export function publishedTime(year: number | string, month?: string, day?: string, big?: boolean, yearFist?: boolean) {
+export function publishedTime(year: number | string, month?: string, day?: string, big?: boolean, yearFist?: boolean, web?: boolean) {
     let warning = false;
     if (year === "NULL") {
         warning = true;
@@ -59,7 +61,9 @@ export function publishedTime(year: number | string, month?: string, day?: strin
                     warning = true;
                     day = "NO DAY"
                 }
-               return (<span style={warning ? { color: "red" } : {}}><time property="schema:datePublished" dateTime={month + (year as string)}>{year} {month} {day}</time></span>)
+                if (web) {
+                    return (<span style={warning ? { color: "red" } : {}}><time property="schema:datePublished" dateTime={month + (year as string)}>{month} {day}, {year}</time></span>)
+                } else return (<span style={warning ? { color: "red" } : {}}><time property="schema:datePublished" dateTime={month + (year as string)}>{year} {month} {day}</time></span>)
             } else if (yearFist) {
                 return (<span style={warning ? { color: "red" } : {}}><time property="schema:datePublished" dateTime={month + (year as string)}>{year} {month}</time></span>)
             }
@@ -125,7 +129,7 @@ export function fromUrl(url: string): React.ReactNode {
         )
     }
     return (
-        <span>Available from: <a property="url" datatype="url" href={url}>{url}</a></span>
+       <a property="url" datatype="url" href={url}>{url}</a>
     )
 }
 
@@ -134,4 +138,32 @@ export function authors(authors: string): React.ReactNode {
         return ( <span style={{color: "red"}}> NO AUTHORS </span>)
     }
     return (<span>{authors}</span>)
+}
+export function publisher(publisher: string): React.ReactNode {
+    if (publisher === "NULL") {
+        return ( <span style={{color: "red"}}> NO PUBLISHER </span>)
+    }
+    return (<span>{publisher}</span>)
+}
+
+export function accessed(accessed: string): React.ReactNode {
+    if (accessed === "NULL") {
+        return ( <span style={{color: "red"}}> NO ACCESS DATE </span>)
+    }
+    return (<span>{accessed}</span>)
+}
+
+export function address(address: string): React.ReactNode {
+    if (address === "NULL") {
+        return ( <span style={{color: "red"}}> NO ADDRESS </span>)
+    }
+    return (<span>{address}</span>)
+}
+
+
+export function school(school: string): React.ReactNode {
+    if (school === "NULL") {
+        return ( <span style={{color: "red"}}> NO SCHOOL </span>)
+    }
+    return (<span>{school}</span>)
 }

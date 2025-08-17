@@ -16,6 +16,7 @@ export class ACSCitation extends AbstractCitation {
     }
 
     renderCitation(entry: Entry, index: number): React.ReactNode {
+        if (entry.type == "article") {
         return (
             <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={this.createEntryId(index)}>
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
@@ -35,5 +36,8 @@ export class ACSCitation extends AbstractCitation {
                 .
             </li>
         );
+        } else {
+            return ( <li style={{color:  "orange"}}> Sorry, rendering {entry.type} not possible. </li>)
+        }
     }
 }

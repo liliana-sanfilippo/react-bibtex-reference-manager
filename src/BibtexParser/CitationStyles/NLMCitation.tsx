@@ -16,6 +16,7 @@ export class NLMCitation extends AbstractCitation {
 
     }
     renderCitation(entry: Entry, index: number): React.ReactNode {
+        if (entry.type == "article") {
         return (
             <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
@@ -38,5 +39,8 @@ export class NLMCitation extends AbstractCitation {
                 {doi((entry.doi ?? "NULL"))}.
             </li>
         );
+        } else {
+            return ( <li style={{color:  "orange"}}> Sorry, rendering {entry.type} not possible. </li>)
+        }
     }
 }
