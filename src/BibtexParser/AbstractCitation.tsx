@@ -19,7 +19,7 @@ export abstract class AbstractCitation {
         return this.start_number;
     }
 
-    abstract renderCitation(entry: Entry, index?: number): React.ReactNode ;
+    abstract renderCitation(entry: Entry, index?: number): React.ReactNode;
     abstract formatAuthors(authors: string): React.ReactNode;
 
 
@@ -69,7 +69,6 @@ export abstract class AbstractCitation {
         return `desc-${citationNumber}${this.appendage}`
     }
 
-
     protected parse(bibtexSources: string[]){
         try {
             const allEntries: Entry[] = [];
@@ -86,6 +85,12 @@ export abstract class AbstractCitation {
 
     hasEntries(): boolean {
         return this.parsedEntries.length > 0;
+    }
+
+    protected fixDoiLink(doi: string): string {
+        if (doi.includes("https")) {
+            return doi;
+        } else return "https://doi.org/" + doi;
     }
 
 

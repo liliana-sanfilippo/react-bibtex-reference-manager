@@ -12,6 +12,8 @@ export class VANCOUVERCitation extends AbstractCitation {
 
     }
     renderCitation(entry: Entry, index: number): React.ReactNode {
+        const oldDoi = entry.doi;
+        entry.doi = super.fixDoiLink(oldDoi);
         return (
             <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
                 {this.formatAuthors(entry.author || entry.editor || "")}
