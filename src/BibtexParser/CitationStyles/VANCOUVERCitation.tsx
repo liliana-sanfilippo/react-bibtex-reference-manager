@@ -38,7 +38,7 @@ export class VANCOUVERCitation extends AbstractCitation {
                     .&nbsp;
                     {journal((entry.journal ?? "NULL"))}
                     .&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.month ?? "NULL"), false, true)}
                     ;&nbsp;
                     {volume((entry.volume ?? "NULL"))}
                     (

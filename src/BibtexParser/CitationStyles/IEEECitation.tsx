@@ -70,7 +70,7 @@ export class IEEECitation extends AbstractCitation {
                         &nbsp;
                         {title(entry.title)}
                         . Published&nbsp;
-                        {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                        {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                         .&nbsp;
                         {fromUrl((entry.url ?? "NULL"))}
                         &nbsp;(accessed&nbsp;
