@@ -5,7 +5,7 @@ import {allNames} from "@liliana-sanfilippo/author-name-parser";
 import {
     accessed, address,
     authors, conference, doi, edition,
-    fromUrl,
+    fromUrl, how,
     issue,
     journal,
     pages,
@@ -239,6 +239,23 @@ export class AMACitation extends AbstractCitation {
                     <i>{publisher(entry.publisher ?? entry.organization ?? entry.institution ?? "NULL")}</i>
                     .&nbsp;
                     {authors(entry.author  ?? "NULL")}
+                    .&nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
+                    . Accessed&nbsp;
+                    {accessed(entry.accessdate ?? entry.note ?? "NULL")}
+                    .&nbsp;
+                    {entry.url && fromUrl(entry.url)}
+                </li>
+            );
+        } else if (entry.type == "video") {
+            return (
+                <li key={index} typeof="schema:Transcript" role="doc-biblioentry" property="schema:citation"
+                    id={super.createEntryId(index)}>
+                    {authors((this.formatAuthors(entry.author ?? "NULL")) ?? entry.organization ?? entry.institution ?? "NULL")}
+                    {!entry.author && "."}&nbsp;
+                    <i>{title(entry.title)}</i>
+                    .&nbsp;
+                    {how(entry.howpublished ?? "NULL")}
                     .&nbsp;
                     {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     . Accessed&nbsp;

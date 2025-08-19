@@ -146,6 +146,14 @@ export function publisher(publisher: string): React.ReactNode {
     return (<span>{publisher}</span>)
 }
 
+export function how(how: string): React.ReactNode {
+    if (how === "NULL") {
+        return ( <span style={{color: "red"}}> NO WEBSITE </span>)
+    }
+    return (<span>{how}</span>)
+}
+
+
 export function accessed(accessed: string): React.ReactNode {
     if (accessed === "NULL") {
         return ( <span style={{color: "red"}}> NO ACCESS DATE </span>)
