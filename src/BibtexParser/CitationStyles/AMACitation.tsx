@@ -86,7 +86,7 @@ export class AMACitation extends AbstractCitation {
                     &nbsp;
                     {title(entry.title)}
                     . Published&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     .&nbsp;
                     {accessed((entry.note ?? "NULL"))}
                     .&nbsp;
@@ -106,7 +106,7 @@ export class AMACitation extends AbstractCitation {
                     :&nbsp;
                     {publisher((entry.publisher ?? this.formatAuthors(entry.author ?? "NULL") ?? entry.organization ??  "NULL"))}
                     ;&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     .
                 </li>
             )
@@ -163,12 +163,12 @@ export class AMACitation extends AbstractCitation {
                     .&nbsp;
                     <i>{publisher((entry.journal ?? entry.publisher ?? "NULL"))}</i>
                     . Preprint. Posted online&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     .&nbsp;
                     {entry.doi && doi((entry.doi ?? "NULL"))}
                 </li>
             );
-        }  else if (entry.type == "inproceedings" || entry.type == "proceedings" || entry.type == "conference") {
+        }  else if (entry.type == "inproceedings" || entry.type == "proceedings") {
             // TODO add ?? "entry.event" to publisher
             return (
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
@@ -178,7 +178,7 @@ export class AMACitation extends AbstractCitation {
                     . Presented at:&nbsp;
                     {conference((entry.journal ?? entry.publisher ?? "NULL" ))}
                     ;&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), ("NULL"), false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     ;&nbsp;
                     {address((entry.address ?? "NULL"))}
                     .
@@ -201,11 +201,11 @@ export class AMACitation extends AbstractCitation {
             return (
                 <li key={index} typeof="schema:Report" role="doc-biblioentry" property="schema:citation"
                     id={super.createEntryId(index)}>
-                    {(entry.author && authors(this.formatAuthors(entry.author))) || entry.organization || "NULL"}
+                    {(entry.author && authors(this.formatAuthors(entry.author))) ?? entry.organization ?? "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
                     .&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     .&nbsp;Accessed&nbsp;
                     {accessed((entry.note ?? "NULL"))}
                     .
@@ -216,7 +216,7 @@ export class AMACitation extends AbstractCitation {
             return (
                 <li key={index} typeof="schema:Manual" role="doc-biblioentry" property="schema:citation"
                     id={super.createEntryId(index)}>
-                    {(entry.author && authors(this.formatAuthors(entry.author))) || entry.organization || "NULL"}
+                    {(entry.author && authors(this.formatAuthors(entry.author))) ?? entry.organization ?? "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
                     &nbsp;
@@ -226,8 +226,25 @@ export class AMACitation extends AbstractCitation {
                     :&nbsp;
                     {publisher((entry.publisher ?? "NULL"))}
                     ;&nbsp;
-                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), "NULL", false, false, true)}
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
                     .
+                </li>
+            );
+        } else if (entry.type == "transcript") {
+            return (
+                <li key={index} typeof="schema:Transcript" role="doc-biblioentry" property="schema:citation"
+                    id={super.createEntryId(index)}>
+                    {title(entry.title)}
+                    . Transcript.&nbsp;
+                    <i>{publisher(entry.publisher ?? entry.organization ?? entry.institution ?? "NULL")}</i>
+                    .&nbsp;
+                    {authors(entry.author  ?? "NULL")}
+                    .&nbsp;
+                    {publishedTime((entry.year ?? "NULL"), (entry.month ?? "NULL"), (entry.day ?? "NULL"), false, false, true)}
+                    . Accessed&nbsp;
+                    {accessed(entry.accessdate ?? entry.note ?? "NULL")}
+                    .&nbsp;
+                    {entry.url && fromUrl(entry.url)}
                 </li>
             );
         }
