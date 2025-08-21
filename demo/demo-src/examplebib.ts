@@ -1,6 +1,6 @@
 export const bibts =
     `@article{koirala_conserved_2019,
-title = {A conserved {RNA} structural motif for organizing topology within picornavi-ral internal ribosome entry sites},
+title = {A conserved {RNA} structural motif for organizing topology within picornaviral internal ribosome entry sites},
 volume = {10},
 url = {https://www.nature.com/articles/s41467-019-11585-z},
 doi = {10.1038/s41467-019-11585-z},
