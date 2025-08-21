@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  // Setzt das Root-Verzeichnis für Output File Tracing
-  outputFileTracingRoot: path.join(__dirname),
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],  // unterstützt TypeScript
+  experimental: {
+    appDir: true,  // falls du den App Router nutzt
+  },
+  webpack(config) {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'demo-src');
+    return config;
+  },
 };
