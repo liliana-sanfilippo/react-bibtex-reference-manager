@@ -1,13 +1,26 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
     plugins: [react()],
     publicDir: "demo-public",
-    optimizeDeps: {
-        include: [
-            '@liliana-sanfilippo/author-name-parser',
-            '@liliana-sanfilippo/bibtex-ts-parser'
-        ]
-    }
+    resolve: {
+        alias: {
+            '@BibtexParser': path.resolve(__dirname, '../src/BibtexParser'),
+        },
+    },
+    server: {
+        fs: {
+            // erlaubt Zugriff auf das Root-Verzeichnis
+            allow: ['..'],
+        },
+    },
+    build: {
+        rollupOptions: {
+            // Wichtig: sonst packt Rollup es evtl. nicht richtig
+            input: path.resolve(__dirname, 'index.html'),
+        },
+    },
+
 });

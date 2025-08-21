@@ -1,6 +1,6 @@
 "use client";
 import "./app.css"
-import {Citations} from "../../src/BibtexParser/Citations";
+import {Citations} from "@BibtexParser/Citations";
 import {importAllBibFilesAsync, importBibFileAsync} from "../../src";
 import {SupScrollLink} from "../../src/ScrollLink/ScrollLink";
 import {LoremIpsum} from 'react-lorem-ipsum';
