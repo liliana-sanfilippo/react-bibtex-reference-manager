@@ -7,7 +7,7 @@ import {LoremIpsum} from 'react-lorem-ipsum';
 import {useEffect, useState} from "react";
 import {bibts} from "./examplebib";
 
-export default function Layout() {
+export default function App() {
     const [bibtexA, setTextsA] = useState<string[]>([]);
     const [bibtexB, setTextsB] = useState<string[]>([]);
     const [types, setTextsTypes] = useState<string[]>([]);
