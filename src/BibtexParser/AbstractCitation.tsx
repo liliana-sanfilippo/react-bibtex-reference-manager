@@ -46,7 +46,8 @@ export abstract class AbstractCitation {
         try {
             const allEntries: Entry[] = [];
             bibtexSources.map(bibtex => {
-                const parsed = parseToEntry(bibtex);
+                const clean = bibtex.replace(/-\s*\n\s*/g, "");
+                const parsed = parseToEntry(clean);
                 allEntries.push(...parsed);
             })
             this.parsedEntries = allEntries;
