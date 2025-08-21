@@ -11,5 +11,7 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "include": ["./demo-src"]
+  "include": [
+    "./app"
+  ]
 }
