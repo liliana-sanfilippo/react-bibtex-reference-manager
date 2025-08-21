@@ -14,7 +14,7 @@ import {
     school,
     title,
     volume
-} from "../htmlUtils";
+} from "../../utils/htmlUtils";
 
 export class AMACitation extends AbstractCitation {
     constructor(bibtexSources: string[] , special?: string, start?: number) {

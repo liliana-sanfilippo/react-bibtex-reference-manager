@@ -2,7 +2,7 @@ import {AbstractCitation} from "../AbstractCitation";
 import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
 import React from "react";
 import {allNames} from "@liliana-sanfilippo/author-name-parser";
-import {authors, doi, issue, journal, pages, publishedTime, title, volume} from "../htmlUtils";
+import {authors, doi, issue, journal, pages, publishedTime, title, volume} from "../../utils/htmlUtils";
 
 export class NLMCitation extends AbstractCitation {
     constructor(bibtexSources: string[] , special?: string, start?: number) {

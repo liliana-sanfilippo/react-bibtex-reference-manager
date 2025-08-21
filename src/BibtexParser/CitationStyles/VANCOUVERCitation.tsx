@@ -14,7 +14,7 @@ import {
     publishedTime, publisher,
     title,
     volume
-} from "../htmlUtils";
+} from "../../utils/htmlUtils";
 
 export class VANCOUVERCitation extends AbstractCitation {
     constructor(bibtexSources: string[] , special?: string, start?: number) {

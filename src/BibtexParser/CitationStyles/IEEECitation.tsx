@@ -14,7 +14,7 @@ import {
     publisher,
     title,
     volume
-} from "../htmlUtils";
+} from "../../utils/htmlUtils";
 
 export class IEEECitation extends AbstractCitation {
     constructor(bibtexSources: string[] , special?: string, start?: number) {
