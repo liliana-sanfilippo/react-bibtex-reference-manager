@@ -1,3 +1,4 @@
+"use client";
 import "./app.css"
 import {Citations} from "../../src/BibtexParser/Citations";
 import {importAllBibFilesAsync, importBibFileAsync} from "../../src";
