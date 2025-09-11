@@ -1,6 +1,10 @@
 {
   "name": "@liliana-sanfilippo/react-bibtex-reference-generator",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "React component to parse and render bibtex sources for scientific blogging and iGEM wikis.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

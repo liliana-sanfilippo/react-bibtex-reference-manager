@@ -1,3 +1,5 @@
 /.idea/
 /demo/node_modules/
 /node_modules/
+/dist/
+/liliana-sanfilippo-react-bibtex-reference-generator-0.0.1.tgz

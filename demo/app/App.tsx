@@ -1,8 +1,6 @@
 "use client";
-import "./app.css"
-import {Citations} from "@BibtexParser/Citations";
-import {importAllBibFilesAsync, importBibFileAsync} from "../../src";
-import {SupScrollLink} from "../../src/ScrollLink/ScrollLink";
+import "./app.css";
+import {SupScrollLink, importAllBibFilesAsync, importBibFileAsync, Citations} from "@liliana-sanfilippo/react-bibtex-reference-generator"
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {useEffect, useState} from "react";
 import {bibts} from "./examplebib";
