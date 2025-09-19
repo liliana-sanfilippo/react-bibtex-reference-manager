@@ -2,7 +2,7 @@
 import "./app.css";
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {bibts} from "./examplebib";
-import {CitationlLink, CitationProvider, ManagedCitation} from "../../src";
+import {CitationlLink, CitationProvider, ManagedCitation} from "@liliana-sanfilippo/react-bibtex-reference-manager";
 
 export default function App() {
     return (
