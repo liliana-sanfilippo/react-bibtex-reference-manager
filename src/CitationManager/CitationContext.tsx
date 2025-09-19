@@ -6,4 +6,5 @@ export type CitationLinkContext = {
     citations: Entry[];
 };
 
-export const CitationContext = createContext<CitationLinkContext | null>(null);
+    export const CitationContext = createContext<CitationLinkContext | null>(null);
+

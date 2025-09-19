@@ -1,5 +1,5 @@
 
-export function collectLinkIds(): string[]{
+export function getLinksAndIds(): string[]{
     let elements: string[] = new Array<string>;
     console.log("Mounting");
 

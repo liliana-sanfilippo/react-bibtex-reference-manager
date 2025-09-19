@@ -1,43 +1,13 @@
-import React from "react";
-import {CitationStylesEnum} from "../BibtexParser/types";
-import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
-import {AbstractCitation} from "../BibtexParser/AbstractCitation";
-import {createCitationGenerator} from "../BibtexParser/citationFactory";
+import React, {useContext} from "react";
+import {Citations} from "@liliana-sanfilippo/react-bibtex-reference-generator";
+import {CitationContext} from "./CitationContext";
 
 
-export interface Props {
-    bibtexSources: Entry[];
-    special?: string,
-    start?: number,
-    style?: CitationStylesEnum | string
-}
 
-export const ManagedCitation: React.FC<Props> = ({ bibtexSources , special, start, style}) => {
-    let generator: AbstractCitation = createCitationGenerator({
-        bibtexSources,
-        special,
-        start,
-        style
-    });
-
-    if (!generator) {
-        return <p>Loading citations...</p>;
-    }
-
-
-    if (!generator.hasEntries()) {
-        return <p>No citations available.</p>;
-    }
-
-
+export const ManagedCitation: React.FC<{}> = () => {
+    const context = useContext(CitationContext);
     return (
-        <div>
-            <ol start={generator.getStartNumber()}>
-                {bibtexSources.map((entry, index) =>
-                    generator.renderCitation(entry, index)
-                )}
-            </ol>
-        </div>
+        <Citations bibtexSources={context!.citations}></Citations>
     );
 
 };

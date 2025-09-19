@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {goTo} from "../ScrollLink/scrollTo";
+import {goTo} from "@liliana-sanfilippo/react-bibtex-reference-generator/dist/ScrollLink/scrollTo";
 import {CitationContext} from "./CitationContext";
 
 interface CitationlLinkProps {

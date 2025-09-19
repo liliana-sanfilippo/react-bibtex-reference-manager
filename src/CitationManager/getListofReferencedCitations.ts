@@ -1,12 +1,13 @@
 import {Entry} from "@liliana-sanfilippo/bibtex-ts-parser";
-import {collectLinkIds} from "./collectLinkIds";
+import {getLinksAndIds} from "./getLinksAndIds";
 import {createdictionary} from "./createdictionary";
+import {parseTex} from "./parseTex";
 
-export function getListofReferencedCitations(bibtexSources: Entry[] | undefined):Entry[]{
-    // const usedEntries: Map<string, Entry> = new Map<string, Entry>();
+export function getListofReferencedCitations(bibtexSources: string[] | undefined):Entry[]{
+    const entries = parseTex(bibtexSources!);
     const usedEntries: Entry[] = []
-    const existingLinks = collectLinkIds();
-    const dict: Map<string, Entry> | null = createdictionary(bibtexSources)
+    const existingLinks = getLinksAndIds();
+    const dict: Map<string, Entry> | null = createdictionary(entries)
     if (!dict) {
         return []
     }

@@ -11,4 +11,33 @@ month = {aug},
 year = {2019},
 pages = {3629},
 }
+@article{chen_noninvasively_2021,
+title = {Noninvasively immunogenic sonodynamic therapy with manganese protoporphyrin liposomes against triple-negative breast cancer},
+volume = {269},
+issn = {0142-9612},
+url = {https://www.sciencedirect.com/science/article/pii/S0142961220308863},
+doi = {https://doi.org/10.1016/j.biomaterials.2020.120639},
+journal = {Biomaterials},
+month = {Dec},
+number = {2},
+author = {Chen, Huaqing and Liu, Lanlan and Ma, Aiqing and Yin, Ting and Chen, Ze and Liang, Ruijing and Qiu, Yuzhi and Zheng, Mingbin and Cai, Lintao},
+year = {2021},
+keywords = {Deep penetration, Immunogenic cell death, Manganese protoporphyrin, Noninvasive therapy, Sonodynamic therapy},
+pages = {120639},
+}
+
+@article{hjhhbhjb,
+title        = {title},
+author       = {Johnson, Alex G. and Grosely, Rosslyn and Petrov, Alexey N. and Puglisi, Joseph D.},
+year         = {2017},
+month        = {mar},
+journal      = {Philosophical Transactions of the Royal Society B: Biological Sciences},
+volume       = {372},
+number       = {1716},
+pages        = {20160177},
+doi          = {10.1098/rstb.2016.0177},
+url          = {https://royalsocietypublishing.org/doi/full/10.1098/rstb.2016.0177},
+urldate      = {2025-02-08},
+note         = {Publisher: Royal Society}
+}
 `
