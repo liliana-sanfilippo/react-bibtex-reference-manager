@@ -1,5 +1,5 @@
 {
-  "name": "bibtex-viewer-demo",
+  "name": "manager-demo",
   "private": true,
   "scripts": {
     "dev": "vite",
