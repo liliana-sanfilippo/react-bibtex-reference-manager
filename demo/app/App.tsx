@@ -1,9 +1,15 @@
 "use client";
 import "./app.css";
-import {SupScrollLink, importAllBibFilesAsync, importBibFileAsync, Citations} from "@liliana-sanfilippo/react-bibtex-reference-generator"
+import {importAllBibFilesAsync, importBibFileAsync, Citations, SupScrollLink} from "@liliana-sanfilippo/react-bibtex-reference-generator"
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {useEffect, useState} from "react";
 import {bibts} from "./examplebib";
+import {collectLinkIds} from "../../src/CitationManager/collectLinkIds";
+import {CitationlLink} from "../../src/CitationManager/CitationLink";
+import {getListofReferencedCitations} from "../../src/CitationManager/getListofReferencedCitations";
+import {parseTex} from "../../src/CitationManager/parseTex";
+import {ManagedCitation} from "../../src/CitationManager/ManagedCitation";
+import {CitationContext, CitationLinkContext} from "../../src/CitationManager/CitationContext";
 
 export default function App() {
     const [bibtexA, setTextsA] = useState<string[]>([]);
@@ -20,9 +26,26 @@ export default function App() {
             .then(setTextsTypes)
             .catch(console.error);
     }, []);
+
+    let context: CitationLinkContext = {links: collectLinkIds(), citations: getListofReferencedCitations(parseTex(bibtexB))}
+
     return (
+        <CitationContext.Provider value={context}>
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
+            <h1>Demo für Bibtex Citation Manager</h1>
+            Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb"/>.
+            Here a link is set to a specific id<CitationlLink referenceID="chen_noninvasively_2021"/>.
+            Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <LoremIpsum p={2} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
+            <p>Links:
+                {collectLinkIds()}</p>
+            <ManagedCitation bibtexSources={context.citations}></ManagedCitation>
             <h1>Demo für Bibtex Citation Generator</h1>
             <p style={{color: "blue"}}> Please note that the scrolling to the reference only works if the content of the page is long enough to scroll.</p>
             <h2 style={{color: "blue"}}>Click on reference number to test.</h2>
@@ -62,7 +85,9 @@ export default function App() {
             https://owl.purdue.edu/owl/research_and_citation/ama_style/index.html
             https://www.bibguru.com/g/ama-software-manual-citation/
             https://www.bibguru.com/g/ama-software-citation/
+
         </div>
     </div>
+        </CitationContext.Provider>
   );
 }
