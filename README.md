@@ -1,7 +1,7 @@
 # React BibTeX Reference Manager
 React Component for Managing references. 
 
-[Demo](https://liliana-sanfilippo.github.io/react-bibtext-reference-manager/)
+[Demo](https://liliana-sanfilippo.github.io/react-bibtex-reference-manager/)
 
 
 ## State
