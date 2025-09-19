@@ -1,7 +1,8 @@
 # React BibTeX Reference Manager
-React Component for Managing references. 
+React Component for Managing references. Automatically generated Citations based on the ids used with Citation Links in the Text of a page. 
+Wiki with manual in progress. 
 
-[Demo](https://liliana-sanfilippo.github.io/react-bibtext-reference-manager/)
+[Demo](https://liliana-sanfilippo.github.io/react-bibtex-reference-manager/)
 
 
 ## State
@@ -14,6 +15,7 @@ React Component for Managing references.
 
 ## Related projects and components
 
+- [React BibteX Reference Generator](https://github.com/liliana-sanfilippo/react-bibtex-reference-generator)
 - [TypeScript BibTeX parser](https://github.com/liliana-sanfilippo/bibtex-ts-parser)
 - [Extended Bibtex Grammar](https://github.com/liliana-sanfilippo/Extended-BibTeX-Grammar)
 - [Name parsing grammar for ANTLRts](https://github.com/liliana-sanfilippo/author-name-parser)
