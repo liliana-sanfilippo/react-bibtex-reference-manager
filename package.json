@@ -30,7 +30,7 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.1",
+    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.2",
     "next": "^15.3.4",
     "react-lorem-ipsum": "^1.4.10"
   },
