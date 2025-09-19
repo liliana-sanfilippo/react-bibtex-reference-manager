@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
     plugins: [react()],
     publicDir: "demo-public",
-    base: `/react-bibtex-reference-generator/`,
+    base: `/react-bibtex-reference-manager/`,
     resolve: {
         alias: {
             '@BibtexParser': path.resolve(__dirname, '../src/BibtexParser'),
