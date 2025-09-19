@@ -14,6 +14,7 @@ React Component for Managing references.
 
 ## Related projects and components
 
+- [React BibteX Reference Generator](https://github.com/liliana-sanfilippo/react-bibtex-reference-generator)
 - [TypeScript BibTeX parser](https://github.com/liliana-sanfilippo/bibtex-ts-parser)
 - [Extended Bibtex Grammar](https://github.com/liliana-sanfilippo/Extended-BibTeX-Grammar)
 - [Name parsing grammar for ANTLRts](https://github.com/liliana-sanfilippo/author-name-parser)
