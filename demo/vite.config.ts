@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
     plugins: [react()],
     publicDir: "demo-public",
-    base: `/react-bibtext-reference-manager/`,
+    base: `/react-bibtex-reference-manager/`,
     server: {
         fs: {
             // erlaubt Zugriff auf das Root-Verzeichnis
