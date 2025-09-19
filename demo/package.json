@@ -7,7 +7,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.1",
+    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.4",
     "@liliana-sanfilippo/react-bibtex-reference-manager": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
