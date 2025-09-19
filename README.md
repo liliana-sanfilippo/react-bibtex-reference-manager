@@ -1,5 +1,8 @@
 # React BibTeX Reference Manager
-I am working towards a react component that automatically renders BibTeX sources for scientific blogging and other scientific websites such as iGEM Wikis
+React Component for Managing references. 
+
+[Demo](https://liliana-sanfilippo.github.io/react-bibtex-reference-manager/)
+
 
 ## State
 
