@@ -30,7 +30,7 @@ export class AMACitation extends AbstractCitation {
     renderCitation(entry: Entry, index: number): React.ReactNode {
         if (entry.type == "article") {
         return (
-            <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+            <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                 &nbsp;
                 {title(entry.title)}
@@ -51,7 +51,7 @@ export class AMACitation extends AbstractCitation {
         );
         } else if (entry.type == "book") {
             return (
-                <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -64,7 +64,7 @@ export class AMACitation extends AbstractCitation {
             )
         } else if (entry.type == "inbook" || entry.type == "incollection") {
             return (
-                <li key={index} typeof="schema:Chapter" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Chapter" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -81,7 +81,7 @@ export class AMACitation extends AbstractCitation {
             )
         } else if (entry.type == "online" || entry.type == "misc") {
             return (
-                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors((entry.author ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -97,7 +97,7 @@ export class AMACitation extends AbstractCitation {
         else if (entry.type == "software") {
             // TODO add version at edition
             return (
-                <li key={index} typeof="schema:Software" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Software" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {title(entry.title)}
                     &nbsp;[Computer Software].&nbsp;
                     {edition((entry.edition ?? "NULL"))}
@@ -113,7 +113,7 @@ export class AMACitation extends AbstractCitation {
         }
         else if (entry.type == "genai") {
                 return (
-                    <li key={index}  role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    <li key={index}  role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                         {title((entry.title ?? "NULL"))}
                         .&nbsp;Version no.&nbsp;
                         {volume((entry.volume) ?? entry.series ?? "NULL")}
@@ -127,7 +127,7 @@ export class AMACitation extends AbstractCitation {
                 )
         } else if (entry.type == "mastersthesis") {
             return (
-                <li key={index} typeof="schema:Thesis" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Thesis" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -141,7 +141,7 @@ export class AMACitation extends AbstractCitation {
             )
         } else if (entry.type == "phdthesis") {
             return (
-                <li key={index} typeof="schema:Thesis" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Thesis" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -156,7 +156,7 @@ export class AMACitation extends AbstractCitation {
         }
         else if (entry.type == "unpublished") {
             return (
-                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -171,7 +171,7 @@ export class AMACitation extends AbstractCitation {
         }  else if (entry.type == "inproceedings" || entry.type == "proceedings") {
             // TODO add ?? "entry.event" to publisher
             return (
-                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -188,7 +188,7 @@ export class AMACitation extends AbstractCitation {
         }  else if (entry.type == "booklet") {
             return (
                 <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -200,7 +200,7 @@ export class AMACitation extends AbstractCitation {
         } else if (entry.type == "techreport") {
             return (
                 <li key={index} typeof="schema:Report" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {(entry.author && authors(this.formatAuthors(entry.author))) ?? entry.organization ?? "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -215,7 +215,7 @@ export class AMACitation extends AbstractCitation {
         } else if (entry.type == "manual") {
             return (
                 <li key={index} typeof="schema:Manual" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {(entry.author && authors(this.formatAuthors(entry.author))) ?? entry.organization ?? "NULL"}
                     &nbsp;
                     <i>{title(entry.title)}</i>
@@ -233,7 +233,7 @@ export class AMACitation extends AbstractCitation {
         } else if (entry.type == "transcript") {
             return (
                 <li key={index} typeof="schema:Transcript" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {title(entry.title)}
                     . Transcript.&nbsp;
                     <i>{publisher(entry.publisher ?? entry.organization ?? entry.institution ?? "NULL")}</i>
@@ -250,7 +250,7 @@ export class AMACitation extends AbstractCitation {
         } else if (entry.type == "video") {
             return (
                 <li key={index} typeof="schema:Transcript" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {authors((this.formatAuthors(entry.author ?? "NULL")) ?? entry.organization ?? entry.institution ?? "NULL")}
                     {!entry.author && "."}&nbsp;
                     <i>{title(entry.title)}</i>

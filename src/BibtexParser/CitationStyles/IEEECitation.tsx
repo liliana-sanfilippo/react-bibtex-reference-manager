@@ -31,7 +31,7 @@ export class IEEECitation extends AbstractCitation {
         if (entry.type == "article") {
             return (
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation"
-                    id={this.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;"{title(entry.title)}",&nbsp;
                     {journal((entry.journal ?? "NULL"), true)}
@@ -49,7 +49,7 @@ export class IEEECitation extends AbstractCitation {
             );
         } else if (entry.type == "book") {
                 return (
-                    <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                         {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                         &nbsp;
                         <i>{title(entry.title)}</i>
@@ -65,7 +65,7 @@ export class IEEECitation extends AbstractCitation {
             }
             else if (entry.type == "misc") {
                 return (
-                    <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                    <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                         {authors((entry.author ?? entry.editor ?? "NULL"))}
                         &nbsp;
                         {title(entry.title)}

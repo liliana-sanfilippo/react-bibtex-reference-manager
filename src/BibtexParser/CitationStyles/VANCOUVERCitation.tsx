@@ -31,7 +31,7 @@ export class VANCOUVERCitation extends AbstractCitation {
         if (entry.type == "article") {
             return (
                 <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation"
-                    id={super.createEntryId(index)}>
+                    id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -56,7 +56,7 @@ export class VANCOUVERCitation extends AbstractCitation {
             );
         } else if (entry.type == "book") {
             return (
-                <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Book" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -72,7 +72,7 @@ export class VANCOUVERCitation extends AbstractCitation {
             )
         }  else if (entry.type == "inbook") {
             return (
-                <li key={index} typeof="schema:Chapter" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:Chapter" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors(this.formatAuthors(entry.author ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}
@@ -93,7 +93,7 @@ export class VANCOUVERCitation extends AbstractCitation {
             )
         } else if (entry.type == "misc") {
             return (
-                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+                <li key={index} typeof="schema:WebSite" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                     {authors((entry.author ?? entry.editor ?? "NULL"))}
                     &nbsp;
                     {title(entry.title)}

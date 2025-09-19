@@ -18,7 +18,7 @@ export class NLMCitation extends AbstractCitation {
     renderCitation(entry: Entry, index: number): React.ReactNode {
         if (entry.type == "article") {
         return (
-            <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(index)}>
+            <li key={index} typeof="schema:ScholarlyArticle" role="doc-biblioentry" property="schema:citation" id={super.createEntryId(entry.id)}>
                 {authors(this.formatAuthors(entry.author ?? entry.editor ?? "NULL"))}
                 &nbsp;
                 {title(entry.title)}

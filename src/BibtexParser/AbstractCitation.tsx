@@ -1,17 +1,24 @@
 import {Entry, parseToEntry} from "@liliana-sanfilippo/bibtex-ts-parser";
 import React from "react";
+import {isArrayStringArray} from "../utils/arrayGuards";
 
 export abstract class AbstractCitation {
-    protected bibtexSources: string[];
+    protected localBibtexSources: string[] | Entry[];
     private parsedEntries: Entry[] = [];
     protected start_number: number;
     protected appendage: string;
 
-    protected constructor(bibtexSources: string[] , special?: string, start?: number) {
+    protected constructor(bibtexSources: string[] | Entry[] , special?: string, start?: number) {
         this.start_number = (start ?? 1);
         this.appendage = this.createAdditionalName(special);
-        this.bibtexSources = bibtexSources;
-        this.parse(this.bibtexSources);
+        if (isArrayStringArray(bibtexSources)) {
+            this.localBibtexSources = bibtexSources;
+            this.parse(this.localBibtexSources);
+        } else {
+            this.localBibtexSources = [];
+            this.parsedEntries = bibtexSources;
+        }
+
 
     }
 
@@ -28,18 +35,16 @@ export abstract class AbstractCitation {
     }
 
 
-
-
     protected createAdditionalName(additional_name?: string): string {
         if (additional_name) {
            return  `#${additional_name}`;
         } else return ""
     }
 
-    protected createEntryId(index: number): string{
-        let citationNumber = index +1;
-        citationNumber += this.start_number -1;
-        return `desc-${citationNumber}${this.appendage}`
+    protected createEntryId(id: string): string{
+       // let citationNumber = index +1;
+       // citationNumber += this.start_number -1;
+        return `${id}-reference`
     }
 
     protected parse(bibtexSources: string[]){
