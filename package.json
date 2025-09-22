@@ -1,6 +1,6 @@
 {
   "name": "@liliana-sanfilippo/react-bibtex-reference-manager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
@@ -40,6 +40,6 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "typescript": "^5.9.2",
-     "vitest": "^3.2.4"
+    "vitest": "^3.2.4"
   }
 }
