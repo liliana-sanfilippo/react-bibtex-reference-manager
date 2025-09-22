@@ -1,16 +1,22 @@
 # React BibTeX Reference Manager
-React Component for Managing references. Automatically generated Citations based on the ids used with Citation Links in the Text of a page. 
+React Component for Managing references. Automatically generates Citations based on the ids used with Citation Links in the text of a page. 
 Wiki with manual in progress. 
 
-[Demo](https://liliana-sanfilippo.github.io/react-bibtex-reference-manager/)
+[Boring Demo with nothig to see really](https://liliana-sanfilippo.github.io/react-bibtex-reference-manager/)
 
+[Manual specifically for iGEM Wikis](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Manual-for-iGEM-Wikis)
 
-## State
+PLEASE create issues if you ancounter bugs or have ideas von enhancements.
 
-- [X] ANTLR Grammar to parse the different ways author names can be written.
-- [X] Create Webpack Parser out of Grammar 
-- [x] Include name parser in Bibtex parser
-- [x] Include multiple ways to format names and make them available on Reference-Configuration
+## Why use it? 
+
+1. It provides proper and consistent formatting of references (with visual warnings if information is missing)*.
+2. No need to keep track in which order references are cited in the text, the manager is able to infer the order of citations and generates the list accordingly.
+3. Point 2. makes it very easy to add references later on as the order adjusts automatically.
+4. It is not necessary to number the citations in the text as that happens automatically, too.
+5. Really, you just need to take care that your bibtex references are alright. And there is a tool for that as well: [BibTeX Tidier](https://liliana-sanfilippo.github.io/bibtex-tidy/index.html).
+
+*Also the auther names are formatted consistently! It even recignised particles such as "van" to be last names instead of just taking the last word as the last name and having everything else as the first names.
 
 
 ## Related projects and components
