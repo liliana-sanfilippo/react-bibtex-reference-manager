@@ -28,7 +28,7 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.0",
+    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.7",
     "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.4"
   },
   "devDependencies": {
