@@ -2,8 +2,7 @@
   "name": "@liliana-sanfilippo/react-bibtex-reference-manager",
   "version": "0.1.0",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "description": "React component that functions as a reference generator and manager and render bibtex sources for scientific blogging and iGEM wikis.",
   "main": "dist/index.js",
