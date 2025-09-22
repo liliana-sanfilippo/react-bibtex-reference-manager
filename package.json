@@ -1,6 +1,6 @@
 {
   "name": "@liliana-sanfilippo/react-bibtex-reference-manager",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
