@@ -14,6 +14,10 @@
     "build": "tsc",
     "test": "vitest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liliana-sanfilippo/react-bibtex-reference-manager"
+  },
   "keywords": [
     "react",
     "bibtex",
