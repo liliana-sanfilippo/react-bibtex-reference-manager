@@ -11,6 +11,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "tsc"
+  },
   "keywords": [
     "react",
     "bibtex",
