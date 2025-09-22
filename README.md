@@ -1,3 +1,7 @@
+[![publish to github](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/publish.yml/badge.svg)](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/publish.yml)
+[![publish to npm](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/publish-npm.yml)
+[![Deploy Demo](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/demo.yml/badge.svg)](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/actions/workflows/demo.yml)
+
 # React BibTeX Reference Manager
 React Component for Managing references. Automatically generates Citations based on the ids used with Citation Links in the text of a page. 
 Wiki with manual in progress. 
