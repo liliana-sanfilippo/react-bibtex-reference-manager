@@ -2,7 +2,7 @@
 import "./app.css";
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {bibts} from "./examplebib";
-import {CitationlLink, CitationProvider, ManagedCitation} from "@liliana-sanfilippo/react-bibtex-reference-manager";
+import {CitationlLink, CitationProvider, ManagedCitation} from "../../src/"
 import {useEffect, useState} from "react";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
         setData(bibts);
     }, []);
     return (
-        <CitationProvider bibtex={data}>
+        <CitationProvider bibtex={data} maintenanceMode>
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für Bibtex Citation Manager</h1>
