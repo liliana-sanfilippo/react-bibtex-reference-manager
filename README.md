@@ -10,6 +10,16 @@ Wiki with manual in progress.
 
 [Manual specifically for iGEM Wikis](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Manual-for-iGEM-Wikis)
 
+[Release Notes](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Reselase-Notes)
+
+[Q & A](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Questions-and-answers)
+
+[Troubleshooting](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Troubleshooting)
+
+[Feature Description](github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Features)
+
+[Features in development](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Features)
+
 PLEASE create issues if you ancounter bugs or have ideas von enhancements.
 
 ## Why use it? 
