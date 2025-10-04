@@ -1,9 +1,8 @@
 {
   "name": "@liliana-sanfilippo/react-bibtex-reference-manager",
-  "version": "0.0.3",
+  "version": "0.1.4",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "description": "React component that functions as a reference generator and manager and render bibtex sources for scientific blogging and iGEM wikis.",
   "main": "dist/index.js",
@@ -11,6 +10,14 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liliana-sanfilippo/react-bibtex-reference-manager"
+  },
   "keywords": [
     "react",
     "bibtex",
@@ -25,12 +32,14 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.0",
+    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.8",
     "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.4"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
     "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0"
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }

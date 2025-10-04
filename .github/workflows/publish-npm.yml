@@ -1,0 +1,28 @@
+name: publish to npm 
+
+on:
+  workflow_dispatch:
+    inputs:
+      manual:
+        description: Manually trigger regular release?
+        default: regular
+        required: true
+
+    
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v4
+        with:
+          token: ${{ secrets.NPMJS_TOKEN }}
+          registry: "https://registry.npmjs.org/"
