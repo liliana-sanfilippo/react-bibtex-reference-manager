@@ -20,7 +20,7 @@ Wiki with manual in progress.
 
 [Features in development](https://github.com/liliana-sanfilippo/react-bibtex-reference-manager/wiki/Features)
 
-PLEASE create issues if you ancounter bugs or have ideas von enhancements.
+PLEASE create issues if you ancounter bugs or have ideas or enhancements.
 
 ## Why use it? 
 
