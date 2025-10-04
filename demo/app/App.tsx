@@ -16,7 +16,6 @@ export default function App() {
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für Bibtex Citation Manager</h1>
             Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
-            Here a link is set to a specific id<CitationlLink referenceID={""}/>.
             Here a link is set to a specific id<CitationlLink referenceID="chen_noninvasively_2021"/>.
             Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
             <LoremIpsum p={6} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
