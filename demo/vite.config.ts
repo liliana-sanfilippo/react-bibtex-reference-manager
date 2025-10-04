@@ -8,13 +8,11 @@ export default defineConfig({
     base: `/react-bibtex-reference-manager/`,
     server: {
         fs: {
-            // erlaubt Zugriff auf das Root-Verzeichnis
             allow: ['..'],
         },
     },
     build: {
         rollupOptions: {
-            // Wichtig: sonst packt Rollup es evtl. nicht richtig
             input: path.resolve(__dirname, 'index.html'),
         },
     },

@@ -1,11 +1,12 @@
-import {getLinksAndIds} from "./getLinksAndIds";
-import {getListofReferencedCitations} from "./getListofReferencedCitations";
+import {getLinksAndIds} from "./getLinksAndIds.js";
+import {getListofReferencedCitations} from "./getListofReferencedCitations.js";
+import {CitationLinkContext} from "./CitationContext.js";
 
-export function createCitationLinkContext(references: string | string[]){
+export function createCitationLinkContext(references: string | string[], maintenanceMode: boolean): CitationLinkContext{
     if (typeof references == "string") {
-        return {links: getLinksAndIds(), citations: getListofReferencedCitations([references])}
+        return {links: getLinksAndIds(), citations: getListofReferencedCitations([references]), maintenanceMode: maintenanceMode}
     } else {
-        return {links: getLinksAndIds(), citations: getListofReferencedCitations(references)}
+        return {links: getLinksAndIds(), citations: getListofReferencedCitations(references), maintenanceMode: maintenanceMode}
     }
 
 }
