@@ -2,8 +2,8 @@
 import "./app.css";
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {bibts} from "./examplebib";
-import {CitationlLink, CitationProvider, ManagedCitation} from "@liliana-sanfilippo/react-bibtex-reference-manager";
 import {useEffect, useState} from "react";
+import {CitationlLink, CitationProvider, ManagedCitation} from "../../src";
 
 export default function App() {
     const [data, setData] = useState<string[] | string>([]);
@@ -15,7 +15,7 @@ export default function App() {
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für Bibtex Citation Manager</h1>
-            Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb"/>.
+            Here a link is set to a specific id<CitationlLink referenceID={["hjhhbhjb", "chen_noninvasively_2021"]}/>.
             Here a link is set to a specific id<CitationlLink referenceID="chen_noninvasively_2021"/>.
             Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
             <LoremIpsum p={6} avgWordsPerSentence={6} avgSentencesPerParagraph={5} />
