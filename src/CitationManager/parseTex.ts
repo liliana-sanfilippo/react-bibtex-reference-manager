@@ -3,7 +3,7 @@ import {BibTexParseError, NoEntriesFoundInBibtexString} from "./Errors.js";
 
 export function parseTex(bibtexSources: string[]): Entry[] {
     /**
-     * Case 1: No list of bibtex strings given
+     * Case 1: No list of bibtex strings given => TypeError
      */
     if(!bibtexSources) {
         console.error("Expected string[]")
@@ -22,14 +22,14 @@ export function parseTex(bibtexSources: string[]): Entry[] {
         })
     } catch (error) {
         /**
-         * Case 2.1: Error while parsing
+         * Case 2.1: Error while parsing => BibTexParseError
          */
         console.error("Error parsing BibTeX: ", error);
         //alert("An error occurred while parsing the BibTeX entries. Please check the format." + bibtexSources);
         throw new BibTexParseError("Error parsing BibTeX: " +  error)
     }
     /**
-     * Case 2.2: No Entries found
+     * Case 2.2: No Entries found => NoEntriesFoundInBibtexString
      */
     if( allEntries.length < 1) {
         console.warn("No entries. Unable to identify entries in the provided string(s)." +
@@ -40,7 +40,7 @@ export function parseTex(bibtexSources: string[]): Entry[] {
             " check.");
     } else {
         /**
-         * Case 2.3: Entries found
+         * Case 2.3: Entries found => RETURN
          */
         return allEntries;
     }
