@@ -7,7 +7,7 @@ interface CitationlLinkProps {
 }
 
 
-export const CitationlLink : React.FC<CitationlLinkProps> = ({referenceID}) => {
+export const CitationLink : React.FC<CitationlLinkProps> = ({referenceID}) => {
     const context = useContext(CitationContext);
     if (typeof referenceID === "string") {
         const handleClick = () => {
