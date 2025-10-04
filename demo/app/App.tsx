@@ -11,7 +11,7 @@ export default function App() {
         setData(bibts);
     }, []);
     return (
-        <CitationProvider bibtex={""}>
+        <CitationProvider bibtex={data}>
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für Bibtex Citation Manager</h1>
