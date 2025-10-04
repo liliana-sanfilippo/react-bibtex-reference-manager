@@ -1,6 +1,6 @@
-import {getLinksAndIds} from "./getLinksAndIds";
-import {getListofReferencedCitations} from "./getListofReferencedCitations";
-import {CitationLinkContext} from "./CitationContext";
+import {getLinksAndIds} from "./getLinksAndIds.js";
+import {getListofReferencedCitations} from "./getListofReferencedCitations.js";
+import {CitationLinkContext} from "./CitationContext.js";
 
 export function createCitationLinkContext(references: string | string[], maintenanceMode: boolean,): CitationLinkContext{
     if (typeof references == "string") {
