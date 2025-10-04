@@ -30,11 +30,11 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.5"
+    "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.8"
+    "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.8",
+    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.5"
   },
   "devDependencies": {
     "@types/chai": "^5.2.2",

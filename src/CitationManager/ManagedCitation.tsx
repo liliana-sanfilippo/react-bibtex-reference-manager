@@ -51,5 +51,6 @@ export const ManagedCitation: React.FC = () => {
             );
         }
     }
-    return  <Citations bibtexSources={context!.citations}></Citations>
+    return  (<Citations bibtexSources={context!.citations}></Citations>)
+
 };
