@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 export default function App() {
     const [data, setData] = useState<string[] | string>([]);
     useEffect(() => {
-        setData(bibts);
+        setData([""]);
     }, []);
     return (
         <CitationProvider bibtex={data} maintenanceMode>
