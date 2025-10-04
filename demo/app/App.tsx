@@ -11,10 +11,11 @@ export default function App() {
         setData(bibts);
     }, []);
     return (
-        <CitationProvider bibtex={data}>
+        <CitationProvider bibtex={""}>
     <div style={{alignContent:'center'}}>
         <div style={{maxWidth: "50%", margin: "auto"}}>
             <h1>Demo für Bibtex Citation Manager</h1>
+            Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
             Here a link is set to a specific id<CitationlLink referenceID={["hjhhbhjb", "chen_noninvasively_2021"]}/>.
             Here a link is set to a specific id<CitationlLink referenceID="chen_noninvasively_2021"/>.
             Here a link is set to a specific id<CitationlLink referenceID="hjhhbhjb" />.
