@@ -13,7 +13,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && mocha \"dist/test/**/*.js\""
+    "test": "npm run build && mocha \"dist/test/**/*.js\"",
+    "patch": "npm version patch && rm -rf dist && npm run build && npm pack && npm publish"
   },
   "repository": {
     "type": "git",
