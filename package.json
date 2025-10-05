@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@liliana-sanfilippo/bibtex-ts-parser": "^2.0.8",
-    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.6"
+    "@liliana-sanfilippo/react-bibtex-reference-generator": "^0.1.7"
   },
   "devDependencies": {
     "@types/chai": "^5.2.2",

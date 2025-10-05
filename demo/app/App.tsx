@@ -3,7 +3,7 @@ import "./app.css";
 import {LoremIpsum} from 'react-lorem-ipsum';
 import {bibts} from "./examplebib";
 import {useEffect, useState} from "react";
-import {CitationLink, CitationProvider, ManagedCitation} from "@liliana-sanfilippo/react-bibtex-reference-manager";
+import {CitationLink, CitationProvider, ManagedCitation} from "../../src";
 
 export default function App() {
     const [data, setData] = useState<string[] | string>([]);
